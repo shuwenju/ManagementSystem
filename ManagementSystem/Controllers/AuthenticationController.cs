@@ -33,7 +33,8 @@ namespace ManagementSystem.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register([FromBody] RegisterUser registerUser, string role)
+		[Route("register")]
+		public async Task<IActionResult> Register([FromBody] RegisterUser registerUser, string role)
         {
 			// check if user exist, if exist return error
 			var existUser = await _userManager.FindByEmailAsync(registerUser.Email);
