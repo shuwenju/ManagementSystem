@@ -24,6 +24,9 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 builder.Services.Configure<IdentityOptions>(
 	options => options.SignIn.RequireConfirmedEmail = true);
 
+// middleware for token/link expiration
+builder.Services.Configure<DataProtectionTokenProviderOptions>(options => options.TokenLifespan = TimeSpan.FromHours(10));
+
 // Add Authentication
 builder.Services.AddAuthentication(options =>
 {
