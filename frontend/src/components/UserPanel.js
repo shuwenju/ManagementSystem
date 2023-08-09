@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import UserSideBar from "./UserSideBar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./Panel.css";
+import "./CSS/Panel.css";
 //REMOVE PAGE1 AND PAGE2 IMPORTS WHEN ADDING REAL PAGES, THESE ARE JUST FOR TEST
 import Page1 from "./Page1";
 import Page2 from "./Page2";

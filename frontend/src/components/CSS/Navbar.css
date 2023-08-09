@@ -1,5 +1,5 @@
 .nav {
-  background-color: rgb(220, 76, 24);
+  background-color: #c84042;
   width: 100vw;
   height: 10vh;
   display: flex;
@@ -43,5 +43,10 @@
 
 .powerIcon {
   cursor: pointer;
-  color: black;
+  color: white;
+}
+
+.powerIcon:hover {
+  border-radius: 50%;
+  color: rgb(82, 203, 82);
 }

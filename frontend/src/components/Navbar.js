@@ -1,5 +1,5 @@
 import React from "react";
-import "./Navbar.css";
+import "./CSS/Navbar.css";
 import { BsPower } from "react-icons/bs";
 
 const Navbar = () => {
@@ -19,9 +19,9 @@ const Navbar = () => {
           {/* Change the Matthew Parker to user.name when prop drilling user from loggedin session */}
           <h6>Matthew Parker</h6>
         </div>
-        <i className="powerIcon">
-          <BsPower size={24} aria-label="logout" />
-        </i>
+        <div className="powerIcon">
+          <BsPower size={30} />
+        </div>
       </div>
     </nav>
   );
