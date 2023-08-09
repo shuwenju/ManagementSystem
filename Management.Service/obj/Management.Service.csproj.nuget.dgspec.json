@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\shuwe\\source\\ManagementSystem\\Management.Service\\Management.Service.csproj": {}
+    "C:\\Users\\shuwe\\source\\Project\\ManagementSystem\\Management.Service\\Management.Service.csproj": {}
   },
   "projects": {
-    "C:\\Users\\shuwe\\source\\ManagementSystem\\Management.Service\\Management.Service.csproj": {
+    "C:\\Users\\shuwe\\source\\Project\\ManagementSystem\\Management.Service\\Management.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\shuwe\\source\\ManagementSystem\\Management.Service\\Management.Service.csproj",
+        "projectUniqueName": "C:\\Users\\shuwe\\source\\Project\\ManagementSystem\\Management.Service\\Management.Service.csproj",
         "projectName": "Management.Service",
-        "projectPath": "C:\\Users\\shuwe\\source\\ManagementSystem\\Management.Service\\Management.Service.csproj",
+        "projectPath": "C:\\Users\\shuwe\\source\\Project\\ManagementSystem\\Management.Service\\Management.Service.csproj",
         "packagesPath": "C:\\Users\\shuwe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\shuwe\\source\\ManagementSystem\\Management.Service\\obj\\",
+        "outputPath": "C:\\Users\\shuwe\\source\\Project\\ManagementSystem\\Management.Service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
