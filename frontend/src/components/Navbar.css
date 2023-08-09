@@ -1,0 +1,47 @@
+.nav {
+  background-color: rgb(220, 76, 24);
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 18rem;
+}
+
+.userNav {
+  display: flex;
+  flex-direction: row;
+}
+
+.userInfo {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 12rem;
+  height: 2rem;
+  margin-right: 2rem;
+}
+
+.userInfo img {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  background-color: white;
+  border: none;
+}
+
+.arrowIcon {
+  cursor: pointer;
+  height: 2rem;
+}
+
+.powerIcon {
+  cursor: pointer;
+  color: black;
+}

@@ -1,8 +1,13 @@
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import UserPanel from "./components/UserPanel";
+import AdminPanel from "./components/AdminPanel";
+import { useState } from "react";
 
 function App() {
-  return <div className="App">Hello</div>;
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  return (
+    <div className="App">{isLoggedIn ? <AdminPanel /> : <UserPanel />}</div>
+  );
 }
 
 export default App;
