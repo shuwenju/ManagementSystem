@@ -1,0 +1,64 @@
+.sideBar {
+  position: absolute;
+  z-index: 10;
+  height: 90vh;
+  width: 5vw;
+  background-color: #232323;
+  display: flex;
+  justify-content: center;
+}
+
+.hamburgerBG {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  margin-top: 1rem;
+  height: 40px;
+}
+
+.hamburgerBG:hover {
+  background-color: #c84042;
+  border-radius: 50%;
+}
+
+.sideBarOpen {
+  position: absolute;
+  height: 90vh;
+  width: 20vw;
+  background-color: #232323;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+ul {
+  color: white;
+  list-style-type: none;
+}
+
+.listItem {
+  margin: 1.5rem 0;
+  height: 2rem;
+  width: 10rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.listItem:hover {
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+}
+
+ul > a {
+  color: white;
+  text-decoration: none;
+}
+
+ul > a:hover {
+  color: black;
+}
