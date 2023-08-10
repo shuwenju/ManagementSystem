@@ -1,0 +1,7 @@
+.sidebar-content a {
+    text-transform: capitalize;
+}
+
+.activeClicked > li {
+    border-radius: 5px;
+}
