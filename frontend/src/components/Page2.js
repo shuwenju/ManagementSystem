@@ -1,9 +1,10 @@
 import React from "react";
+import OrderForm from "./OrderForm";
 
 const Page2 = () => {
   return (
-    <div>
-      <h1>This is Page 2!!</h1>
+    <div className="pt-5">
+      <OrderForm />
     </div>
   );
 };

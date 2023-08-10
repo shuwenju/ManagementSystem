@@ -48,11 +48,11 @@ ul {
   cursor: pointer;
 }
 
-ul > a {
+ul>a {
   color: white;
   text-decoration: none;
 }
 
-ul > a:hover {
+ul>a:hover {
   color: black;
 }
