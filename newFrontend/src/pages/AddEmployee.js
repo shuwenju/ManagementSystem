@@ -1,13 +1,12 @@
 import EmployeesList from "./EmployeesList";
 import { useState } from "react";
-export const Employees = (props) => {
-   
+import EmployeeForm from "./EmployeeForm";
+export const AddEmployee = (props) => {
 
     return (
         <div className="wrapper">
             
-            <EmployeesList employees={props.employees} setEmployees={props.setEmployees} />
-
+            <EmployeeForm addEmployee={props.addEmployee} />
         </div>
     );
 }
