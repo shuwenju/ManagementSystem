@@ -1,7 +1,7 @@
 import React, {Fragment} from "react";
 import {Route, Routes} from "react-router-dom";
 import {Dashboard} from "../pages/Dashboard";
-import {Employees} from "../pages/Employees";
+import {Employees} from "../pages/EmployeesList";
 import {Customers} from "../pages/Customers";
 import {Products} from "../pages/Products";
 import {Orders} from "../pages/Orders";
