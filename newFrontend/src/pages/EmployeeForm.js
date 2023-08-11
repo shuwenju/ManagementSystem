@@ -76,14 +76,14 @@ const EmployeeForm = ({ addEmployee }) => {
                   </td>
                 </tr>
                 <tr>
-                  <td cols="2">
-                    {" "}
+                  <td colspan="2">
+                   
                     <label htmlFor="email">Email*</label>
                   </td>
                 </tr>
                 <tr>
-                  <td cols="2">
-                    <input
+                  <td colSpan="2">
+                    <input 
                       type="email"
                       id="email"
                       value={email}
@@ -112,8 +112,7 @@ const EmployeeForm = ({ addEmployee }) => {
                     />
                   </td>
                   <td>
-                   
-                    <input
+                   <input
                       type="text"
                       id="LName"
                       value={lName}
@@ -123,12 +122,12 @@ const EmployeeForm = ({ addEmployee }) => {
                   </td>
                 </tr>
                 <tr>
-                  <td cols="2">
+                  <td colSpan="2">
                     <input
                       type="checkbox"
                       checked={sendEmail}
                       onChange={handleCheckboxChange}
-                    />{" "}
+                    />
                     Send email confirmation
                   </td>
                 </tr>
@@ -145,8 +144,9 @@ const EmployeeForm = ({ addEmployee }) => {
             <button className="image_button"> Select Image</button>
           </div>
         </div>
+
         <div className="user_confirmation">
-          <button type="submit">Add Employee</button>
+          <button type="submit" className="user_button"_>Add Employee</button>
           <Link to="/employeeslist">Cancel</Link>
         </div>
       </form>
