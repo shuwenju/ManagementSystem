@@ -6,6 +6,7 @@ import {Products} from "../pages/Products";
 import {Orders} from "../pages/Orders";
 import {Reports} from "../pages/Reports";
 import {Setting} from "../pages/Setting";
+import { AddEmployee } from "../pages/AddEmployee";
 import AdminLayout from "../Layouts/AdminLayout";
 
 const AdminRoutes = () => {
@@ -16,6 +17,7 @@ const AdminRoutes = () => {
                 <Route index element={<Navigate to="/admin/dashboard"/>}/>
                 <Route path="dashboard" element={<Dashboard/>}/>
                 <Route path="employees" element={<Employees/>}/>
+                <Route path="add-employee" element={<AddEmployee/>}/>
                 <Route path="customers" element={<Customers/>}/>
                 <Route path="products" element={<Products/>}/>
                 <Route path="orders" element={<Orders/>}/>

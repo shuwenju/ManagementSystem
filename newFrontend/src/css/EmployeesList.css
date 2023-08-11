@@ -1,0 +1,21 @@
+
+.button-container {
+    display: flex;
+    justify-content: left;
+   
+    margin-top: 20px;;
+ margin-left:10px;
+    margin-bottom: 20px;
+   
+  }
+  
+  .blue-button {
+    background-color: blue;
+    color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    
+  }

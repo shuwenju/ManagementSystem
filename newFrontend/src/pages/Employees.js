@@ -1,7 +1,15 @@
-export const Employees = () => {
+import EmployeesList from "./EmployeesList";
+import { useState } from "react";
+export const Employees = (props) => {
+    const [employees, setEmployees] = useState([
+        { fName: "huang", lName: "danli", email: "danli@gmail.com" },
+    ]);
+
     return (
         <div className="wrapper">
-            <h1>Employees</h1>
+            
+            <EmployeesList employees={employees} setEmployees={setEmployees} />
+
         </div>
     );
-};
+}
