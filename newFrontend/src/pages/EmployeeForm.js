@@ -1,40 +1,60 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./EmployeeForm.css";
+import axios from "axios";
 
 const EmployeeForm = ({ addEmployee }) => {
+
   const [sendEmail, setSendEmail] = useState(false);
+
   const handleCheckboxChange = () => {
     setSendEmail(!sendEmail);
+
   };
 
   const navigate = useNavigate(); //
   const [userName, setUserName] = useState("");
-  const [role, setRole] = useState("");
-  
-  const [fName, setFName] = useState("");
-  const [lName, setLName] = useState("");
+  // const [role, setRole] = useState("");
+
+  // const [fName, setFName] = useState("");
+  // const [lName, setLName] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
 
     const newEmployee = {
       userName,
-      role,
-      fName,
-      lName,
+ //     role,
+ //     fName,
+ //     lName,
       email,
+      password,
     };
 
     // Call the addEmployee function to add the new employee
     addEmployee(newEmployee);
 
+try{
+       console.log("New Employee Data =>");
+       newEmployee.password="Danli-123";
+       console.log(newEmployee);
+       const response = await axios.post('https://localhost:44343/api/authentication/register', newEmployee);
+       console.log(response.data);
+     } catch (error) {
+       console.error(error.response.data);
+     }
+  ;
+
+
+
+
     // Clear form inputs
     setUserName("");
-    setFName("");
-    setLName("");
+
+    //  setFName("");
+    //setLName("");
     setEmail("");
     
     navigate("/employees");
@@ -65,7 +85,7 @@ const EmployeeForm = ({ addEmployee }) => {
                       required
                     />
                   </td>
-                  <td>
+                  {/* <td>
                     <input
                       type="text"
                       id="lName"
@@ -73,10 +93,10 @@ const EmployeeForm = ({ addEmployee }) => {
                       onChange={(e) => setRole(e.target.value)}
                       required
                     />
-                  </td>
+                  </td> */}
                 </tr>
                 <tr>
-                  <td colspan="2">
+                  <td colSpan="2">
                    
                     <label htmlFor="email">Email*</label>
                   </td>
@@ -101,7 +121,7 @@ const EmployeeForm = ({ addEmployee }) => {
                   </td>
                 </tr>
                 <tr>
-                  <td>
+                  {/* <td>
                    
                     <input
                       type="text"
@@ -110,8 +130,8 @@ const EmployeeForm = ({ addEmployee }) => {
                       onChange={(e) => setFName(e.target.value)}
                       required
                     />
-                  </td>
-                  <td>
+                  </td> */}
+                  {/* <td>
                    <input
                       type="text"
                       id="LName"
@@ -119,7 +139,7 @@ const EmployeeForm = ({ addEmployee }) => {
                       onChange={(e) => setLName(e.target.value)}
                       required
                     />
-                  </td>
+                  </td> */}
                 </tr>
                 <tr>
                   <td colSpan="2">
