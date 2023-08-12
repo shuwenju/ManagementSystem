@@ -17,31 +17,31 @@ const AdminSidebar = ({toggled}) => {
             >
                 <CDBSidebarContent className="sidebar-content">
                     <CDBSidebarMenu>
-                        <NavLink to="/" className={({isActive}) => isActive ? "activeClicked" : ''}>
+                        <NavLink to="/admin/dashboard" className={({isActive}) => isActive ? "activeClicked" : ''}>
                             <CDBSidebarMenuItem icon="home">Dashboard</CDBSidebarMenuItem>
                         </NavLink>
 
-                        <NavLink to="/employees" className={({isActive}) => isActive ? "activeClicked" : ''}>
+                        <NavLink to="/admin/employees" className={({isActive}) => isActive ? "activeClicked" : ''}>
                             <CDBSidebarMenuItem icon="user-friends">Employees</CDBSidebarMenuItem>
                         </NavLink>
 
-                        <NavLink to="/customers" className={({isActive}) => isActive ? "activeClicked" : ''}>
+                        <NavLink to="/admin/customers" className={({isActive}) => isActive ? "activeClicked" : ''}>
                             <CDBSidebarMenuItem icon="people-arrows">Customers</CDBSidebarMenuItem>
                         </NavLink>
 
-                        <NavLink to="/products" className={({isActive}) => isActive ? "activeClicked" : ''}>
+                        <NavLink to="/admin/products" className={({isActive}) => isActive ? "activeClicked" : ''}>
                             <CDBSidebarMenuItem icon="shapes">Products</CDBSidebarMenuItem>
                         </NavLink>
 
-                        <NavLink to="/orders" className={({isActive}) => isActive ? "activeClicked" : ''}>
+                        <NavLink to="/admin/orders" className={({isActive}) => isActive ? "activeClicked" : ''}>
                             <CDBSidebarMenuItem icon="box">Orders</CDBSidebarMenuItem>
                         </NavLink>
 
-                        <NavLink to="/reports" className={({isActive}) => isActive ? "activeClicked" : ''}>
+                        <NavLink to="/admin/reports" className={({isActive}) => isActive ? "activeClicked" : ''}>
                             <CDBSidebarMenuItem icon="table">Reports</CDBSidebarMenuItem>
                         </NavLink>
 
-                        <NavLink to="/setting" className={({isActive}) => isActive ? "activeClicked" : ''}>
+                        <NavLink to="/admin/setting" className={({isActive}) => isActive ? "activeClicked" : ''}>
                             <CDBSidebarMenuItem icon="cog">Setting</CDBSidebarMenuItem>
                         </NavLink>
 
