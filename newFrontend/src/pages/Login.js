@@ -1,6 +1,6 @@
 import "../css/Login.css";
-import animationGif from "./media/login-animation.gif";
-import goatHead from "./media/goat-head.png";
+import animationGif from "../media/login-animation.gif";
+import goatHead from "../media/goat-head.png";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
