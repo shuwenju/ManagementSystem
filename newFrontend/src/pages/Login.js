@@ -29,7 +29,7 @@ function Login() {
       localStorage.setItem("jwtToken", token);
 
       setJwtToken(token);
-      navigate("/page1");
+      navigate("/page1"); //need to figure out how to distinguish user from admin
     } catch (error) {
       // Handle errors, e.g., show error message to the user.
     }
