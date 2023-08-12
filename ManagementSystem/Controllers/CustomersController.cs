@@ -8,103 +8,137 @@ using Microsoft.EntityFrameworkCore;
 using ManagementSystem.Models;
 using ManagementSystem.Models.DbModels;
 using ManagementSystem.Dtos;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace ManagementSystem.Controllers
 {
-    [Route("api/[controller]")]
+	[Authorize(Roles = "Admin, User")]
+	[Route("api/[controller]")]
     [ApiController]
     public class CustomersController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _dbContext;
 
         public CustomersController(ApplicationDbContext context)
         {
-            _context = context;
+			_dbContext = context;
         }
 
-        // GET: api/Customers
+        // GET: api/Customers/allCustomers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
+		[Route("allCustomers")]
+		public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
         {
-            if (_context.Customers == null)
+            if (_dbContext.Customers == null)
             {
-                return NotFound();
-            }
-            return await _context.Customers.ToListAsync();
+				return StatusCode(StatusCodes.Status404NotFound,
+					new Response { Status = "Error", Message = "Customer not found!" });
+			}
+            return await _dbContext.Customers.ToListAsync();
         }
 
         // GET: api/Customers/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Customer>> GetCustomer([FromRoute] int id)
         {
-            if (_context.Customers == null)
-            {
-                return NotFound();
-            }
-            var customer = await _context.Customers.FirstOrDefaultAsync(c => c.Id == id);
+   //         if (_dbContext.Customers == null)
+   //         {
+			//	return StatusCode(StatusCodes.Status404NotFound,
+			//		new Response { Status = "Error", Message = "Customer not found!" });
+			//}
+            var customer = await _dbContext.Customers.FirstOrDefaultAsync(c => c.Id == id);
 
             if (customer == null)
             {
-                return NotFound("Customer Not Found");
-            }
+				return StatusCode(StatusCodes.Status404NotFound,
+					new Response { Status = "Error", Message = "Customer not found!" });
+			}
 
             return Ok(customer);
         }
 
-        // POST: api/Customers
+        // POST: api/Customers/addCustomer
         [HttpPost]
-        public async Task<ActionResult> PostCustomer([FromBody] CustomerDto dto)
+		[Route("addCustomer")]
+		public async Task<ActionResult> addCustomer([FromBody] CustomerDto dto)
         {
+			var existingCustomer = await _dbContext.Customers.FirstOrDefaultAsync(c => c.Email == dto.Email);
+			if (existingCustomer != null)
+			{
+				return StatusCode(StatusCodes.Status403Forbidden,
+					new Response { Status = "Error", Message = "Custoer already exists!" });
+			}
 
-            var newCustomer = new Customer()
+			var newCustomer = new Customer()
             {
                 Name = dto.Name,
                 Email = dto.Email,
                 Address = dto.Address,
                 PhoneNumber = dto.PhoneNumber
             };
-            await _context.Customers.AddAsync(newCustomer);
-            await _context.SaveChangesAsync();
-
-            return Ok("Customer Saved Successfully");
-        }
+            var result = await _dbContext.Customers.AddAsync(newCustomer);
+            if(result != null)
+            {
+				await _dbContext.SaveChangesAsync();
+				return StatusCode(StatusCodes.Status200OK,
+					new Response { Status = "Success", Message = "Customer created successfully" });
+			}
+			return StatusCode(StatusCodes.Status500InternalServerError,
+						new Response { Status = "Error", Message = "Customer failed to create!" });
+		}
 
         // PUT: api/Customers/id
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCustomer([FromRoute] int id, [FromBody] CustomerDto dto)
+		public async Task<IActionResult> PutCustomer([FromRoute] int id, [FromBody] CustomerDto dto)
         {
-            var customer = await _context.Customers.FirstOrDefaultAsync(c => c.Id == id);
+            var customer = await _dbContext.Customers.FirstOrDefaultAsync(c => c.Id == id);
 
             if (customer is null)
             {
-                return NotFound("Customer Not Found");
+				return StatusCode(StatusCodes.Status404NotFound,
+					new Response { Status = "Error", Message = "Customer not found!" });
             }
+            else
+            {
+				customer.Name = dto.Name;
+				customer.Email = dto.Email;
+				customer.Address = dto.Address;
+				customer.PhoneNumber = dto.PhoneNumber;
 
-            customer.Name = dto.Name;
-            customer.Email = dto.Email;
-            customer.Address = dto.Address;
-            customer.PhoneNumber = dto.PhoneNumber;
-
-            await _context.SaveChangesAsync();
-
-            return Ok("Customer Updated Successfully");
-        }
+				var result = await _dbContext.SaveChangesAsync();
+				if (result > 0)
+				{
+					return StatusCode(StatusCodes.Status200OK,
+						new Response { Status = "Success", Message = "Customer updated successfully" });
+				}
+			}
+           
+			return StatusCode(StatusCodes.Status500InternalServerError,
+						 new Response { Status = "Error", Message = "Customer failed to update!" });
+		}
 
         // DELETE: api/Customers/id
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCustomer([FromRoute] int id)
+		public async Task<IActionResult> DeleteCustomer([FromRoute] int id)
         {
-            var customer = await _context.Customers.FirstOrDefaultAsync(q => q.Id == id);
+            var customer = await _dbContext.Customers.FirstOrDefaultAsync(q => q.Id == id);
 
             if (customer is null)
             {
-                return NotFound("Customer Not Found");
+				return StatusCode(StatusCodes.Status404NotFound,
+					new Response { Status = "Error", Message = "Customer not found!" });
+			}
+
+			_dbContext.Customers.Remove(customer);
+			var deletedCount = await _dbContext.SaveChangesAsync();
+            if (deletedCount > 0)
+            {
+                return StatusCode(StatusCodes.Status200OK,
+                new Response { Status = "Success", Message = "Customer deleted successfully" });
             }
-
-            _context.Customers.Remove(customer);
-            await _context.SaveChangesAsync();
-
-            return Ok("Customer Deleted Successfully");
-        }
+			return StatusCode(StatusCodes.Status500InternalServerError,
+			 new Response { Status = "Error", Message = "Customer failed to delete!" });
+		}
     }
 }

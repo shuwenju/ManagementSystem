@@ -8,10 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using ManagementSystem.Models;
 using ManagementSystem.Models.DbModels;
 using ManagementSystem.Dtos;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace ManagementSystem.Controllers
 {
-    [Route("api/[controller]")]
+	[Authorize(Roles = "Admin")]
+	[Route("api/[controller]")]
     [ApiController]
     public class ItemsController : ControllerBase
     {
