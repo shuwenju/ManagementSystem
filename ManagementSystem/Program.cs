@@ -1,6 +1,7 @@
 using Management.Service.Models;
 using Management.Service.Services;
 using ManagementSystem.Models;
+using ManagementSystem.Models.DbModels;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +17,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 	options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
 // For Identity
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 	.AddEntityFrameworkStores<ApplicationDbContext>()
 	.AddDefaultTokenProviders();
 
