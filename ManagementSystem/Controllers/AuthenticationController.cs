@@ -156,7 +156,8 @@ namespace ManagementSystem.Controllers
 				return Ok(new
 				{
 					token = new JwtSecurityTokenHandler().WriteToken(jwtToken),
-					expiration = jwtToken.ValidTo
+					expiration = jwtToken.ValidTo,
+					role = userRoles[0]
 				});
 				//return the token
 			}
