@@ -1,5 +1,6 @@
 import {Navigate, Route, Routes} from "react-router-dom";
 import Login from "../pages/Login";
+import Customers from "../pages/Customers"
 import AdminRoutes from "./AdminRoutes";
 import UserRoutes from "./UserRoutes";
 
