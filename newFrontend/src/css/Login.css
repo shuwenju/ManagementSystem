@@ -1,0 +1,88 @@
+.page-container {
+    display: flex;
+    height: 100vh;
+}
+
+.left-section {
+    flex: 3;
+    /* Adjust the flex value to change the width */
+    background-color: #ffffff;
+}
+
+.gif {
+    width: 70%;
+}
+
+.right-section {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    /* Adjust the flex value to change the width */
+}
+
+.top-right {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    /* Adjust the flex value to change the height */
+    background-color: #ffffff;
+    justify-content: center;
+    /* Center items vertically */
+    align-items: center;
+    /* Center items horizontally */
+}
+
+.goat-head {
+    width: 300px;
+    /* Adjust the size as needed */
+    height: auto;
+    margin-bottom: 10px;
+    /* Add some space between image and text */
+}
+
+.login-title {
+    font-size: 60px;
+    font-family: 'Brush Script MT', cursive;
+    color: #b44747;
+}
+
+.bottom-right {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    /* Adjust the flex value to change the height */
+    background-color: #ffffff;
+    align-items: center;
+    /* Center items horizontally */
+}
+
+.login-text {
+    margin-top: 60px;
+    font-size: 26px;
+}
+
+.login-form {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-input {
+    margin-bottom: 30px;
+    /* Add margin between each input */
+    padding-left: 20px;
+    width: 60%;
+    height: 50px;
+}
+
+.login-button {
+    width: 150px;
+    height: 50px;
+    background-color: #4b7bff;
+    color: #ffffff;
+    border: black;
+    border-radius: 4px;
+
+}
