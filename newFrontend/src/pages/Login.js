@@ -28,11 +28,23 @@ function Login() {
       // Store the token in localStorage
       localStorage.setItem("jwtToken", token);
 
-      setJwtToken(token);
-      navigate("/user"); //need to figure out how to distinguish user from admin
+      try {
+        // Attempt to access the admin endpoint
+        await axios.get("https://localhost:44343/api/Admin/employees", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        // If the call succeeds, navigate to admin dashboard
+        navigate("/admin");
+      } catch (error) {
+        // If the call fails, navigate to user page
+        navigate("/user");
+      }
     } catch (error) {
       // Handle errors, e.g., show error message to the user.
-    }
+    } //setJwtToken(token);
   };
 
   return (
