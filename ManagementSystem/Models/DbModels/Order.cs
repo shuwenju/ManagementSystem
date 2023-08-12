@@ -19,7 +19,7 @@ namespace ManagementSystem.Models.DbModels
         public Customer Customer { get; set; } = null!;
 
         //UserId foreign key property
-        public int ApplicationUserId { get; set; }
+        public string ApplicationUserId { get; set; }
 
         // navigation properties
         [ValidateNever]

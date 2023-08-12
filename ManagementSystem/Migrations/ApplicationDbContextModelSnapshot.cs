@@ -93,6 +93,26 @@ namespace ManagementSystem.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "0f79c319-88e6-4ae6-83b2-49aa9a9b3eb4",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "bdc1e57e-4901-4821-986d-cc2ee5cb0b47",
+                            Email = "admin@test.com",
+                            EmailConfirmed = true,
+                            FirstName = "",
+                            LastName = "",
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@TEST.COM",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOIZ81pEjzsw+C5kJMt7Vg0WsySMsApupRnoPwLxakU86OpOypHFc48PEluyoE2ZEw==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "626a8781-72eb-43af-994a-95f5fc51faa3",
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        });
                 });
 
             modelBuilder.Entity("ManagementSystem.Models.DbModels.Customer", b =>
@@ -159,10 +179,8 @@ namespace ManagementSystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ApplicationUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ApplicationUserId1")
+                    b.Property<string>("ApplicationUserId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreatedAt")
@@ -180,7 +198,7 @@ namespace ManagementSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId1");
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("CustomerId");
 
@@ -242,14 +260,14 @@ namespace ManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b26c5c42-5b2b-4d6f-a4b6-fb178d78ced9",
+                            Id = "9cbc35f0-81d3-473a-a2ea-f8b19064afb9",
                             ConcurrencyStamp = "1",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "5fd2e567-4685-44f8-9576-80249b3058b1",
+                            Id = "74d18254-9ed4-43f7-9abd-11d1773c3e09",
                             ConcurrencyStamp = "2",
                             Name = "User",
                             NormalizedName = "User"
@@ -341,6 +359,13 @@ namespace ManagementSystem.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "0f79c319-88e6-4ae6-83b2-49aa9a9b3eb4",
+                            RoleId = "9cbc35f0-81d3-473a-a2ea-f8b19064afb9"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -366,10 +391,12 @@ namespace ManagementSystem.Migrations
                 {
                     b.HasOne("ManagementSystem.Models.DbModels.ApplicationUser", "ApplicationUser")
                         .WithMany("Orders")
-                        .HasForeignKey("ApplicationUserId1");
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ManagementSystem.Models.DbModels.Customer", "Customer")
-                        .WithMany("Orders")
+                        .WithMany()
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -450,11 +477,6 @@ namespace ManagementSystem.Migrations
                 });
 
             modelBuilder.Entity("ManagementSystem.Models.DbModels.ApplicationUser", b =>
-                {
-                    b.Navigation("Orders");
-                });
-
-            modelBuilder.Entity("ManagementSystem.Models.DbModels.Customer", b =>
                 {
                     b.Navigation("Orders");
                 });
