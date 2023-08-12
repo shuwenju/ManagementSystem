@@ -1,4 +1,4 @@
-import "./CSS/login.css";
+import "./CSS/Login.css";
 import animationGif from "./media/login-animation.gif";
 import goatHead from "./media/goat-head.png";
 

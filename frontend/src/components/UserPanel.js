@@ -6,6 +6,7 @@ import "./CSS/Panel.css";
 //REMOVE PAGE1 AND PAGE2 IMPORTS WHEN ADDING REAL PAGES, THESE ARE JUST FOR TEST
 import Page1 from "./Page1";
 import Page2 from "./Page2";
+import Login from "./Login";
 
 const UserPanel = () => {
   return (
@@ -22,7 +23,7 @@ const UserPanel = () => {
             path="/page1"
             element={
               <div className="main">
-                <Page1 />
+                <Login />
               </div>
             }
           />

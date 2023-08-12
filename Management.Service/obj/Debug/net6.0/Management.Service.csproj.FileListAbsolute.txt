@@ -58,3 +58,15 @@ C:\Users\shuwe\source\Project\ManagementSystem\Management.Service\obj\Debug\net6
 C:\Users\shuwe\source\Project\ManagementSystem\Management.Service\obj\Debug\net6.0\refint\Management.Service.dll
 C:\Users\shuwe\source\Project\ManagementSystem\Management.Service\obj\Debug\net6.0\Management.Service.pdb
 C:\Users\shuwe\source\Project\ManagementSystem\Management.Service\obj\Debug\net6.0\ref\Management.Service.dll
+D:\School\16 - Integration Project\ManagementSystem\Management.Service\bin\Debug\net6.0\Management.Service.deps.json
+D:\School\16 - Integration Project\ManagementSystem\Management.Service\bin\Debug\net6.0\Management.Service.dll
+D:\School\16 - Integration Project\ManagementSystem\Management.Service\bin\Debug\net6.0\Management.Service.pdb
+D:\School\16 - Integration Project\ManagementSystem\Management.Service\obj\Debug\net6.0\Management.Service.csproj.AssemblyReference.cache
+D:\School\16 - Integration Project\ManagementSystem\Management.Service\obj\Debug\net6.0\Management.Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\School\16 - Integration Project\ManagementSystem\Management.Service\obj\Debug\net6.0\Management.Service.AssemblyInfoInputs.cache
+D:\School\16 - Integration Project\ManagementSystem\Management.Service\obj\Debug\net6.0\Management.Service.AssemblyInfo.cs
+D:\School\16 - Integration Project\ManagementSystem\Management.Service\obj\Debug\net6.0\Management.Service.csproj.CoreCompileInputs.cache
+D:\School\16 - Integration Project\ManagementSystem\Management.Service\obj\Debug\net6.0\Management.Service.dll
+D:\School\16 - Integration Project\ManagementSystem\Management.Service\obj\Debug\net6.0\refint\Management.Service.dll
+D:\School\16 - Integration Project\ManagementSystem\Management.Service\obj\Debug\net6.0\Management.Service.pdb
+D:\School\16 - Integration Project\ManagementSystem\Management.Service\obj\Debug\net6.0\ref\Management.Service.dll

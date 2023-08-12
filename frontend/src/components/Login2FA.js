@@ -1,4 +1,4 @@
-import "./CSS/login.css";
+import "./CSS/Login.css";
 import animationGif from "./media/login-animation.gif";
 import goatHead from "./media/goat-head.png";
 
@@ -14,14 +14,16 @@ function Login2FA() {
           <p className="login-title">RAM Inventory Manager</p>
         </div>
         <div className="bottom-right">
-          <p className="login-text">Use your One Time Password(OTP) and username</p>
+          <p className="login-text">
+            Use your One Time Password(OTP) and username
+          </p>
           <form className="login-form">
-            <input className="login-input" type="text" placeholder="Access Code" />
             <input
               className="login-input"
               type="text"
-              placeholder="Username"
+              placeholder="Access Code"
             />
+            <input className="login-input" type="text" placeholder="Username" />
             <button className="login-button">Sign in</button>
           </form>
         </div>
