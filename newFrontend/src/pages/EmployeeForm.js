@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, {useState} from "react";
+import {Link, useNavigate} from "react-router-dom";
 import "./EmployeeForm.css";
 import axios from "axios";
 
+// danli_employeeAdd_layout_20230810
 const EmployeeForm = ({ addEmployee }) => {
 
   const [sendEmail, setSendEmail] = useState(false);
@@ -15,12 +16,12 @@ const EmployeeForm = ({ addEmployee }) => {
   const navigate = useNavigate(); //
   const [userName, setUserName] = useState("");
   // const [role, setRole] = useState("");
-
   // const [fName, setFName] = useState("");
   // const [lName, setLName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+// danli_employeeAdd_layout_20230810
   const handleSubmit =async (e) => {
     e.preventDefault();
 
@@ -31,11 +32,47 @@ const EmployeeForm = ({ addEmployee }) => {
  //     lName,
       email,
       password,
+
     };
 
-    // Call the addEmployee function to add the new employee
-    addEmployee(newEmployee);
-
+    return (
+        <div className="em-container">
+            <form onSubmit={handleSubmit}>
+                <h2 className="add_new_employee_header">Add New Employee</h2>
+                <div className="user_info">
+                    <div className="user_detail">
+                        <div className="user_detail_header">
+                            <h3> User details:</h3>
+                        </div>
+                        <div className="user_table">
+                            <table>
+                                <tr>
+                                    <td>Username*</td>
+                                    <td>Role</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            id="userName"
+                                            value={userName}
+                                            onChange={(e) => setUserName(e.target.value)}
+                                            required
+                                        />
+                                    </td>
+                                    <td>
+                                        <input
+                                            type="text"
+                                            id="lName"
+                                            value={role}
+                                            onChange={(e) => setRole(e.target.value)}
+                                            required
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+// danli_employeeAdd_layout_20230810
 try{
        console.log("New Employee Data =>");
        newEmployee.password="Danli-123";
@@ -165,13 +202,14 @@ try{
           </div>
         </div>
 
-        <div className="user_confirmation">
-          <button type="submit" className="user_button"_>Add Employee</button>
-          <Link to="/employeeslist">Cancel</Link>
+
+                <div className="user_confirmation">
+                    <button type="submit" className="user_button" _>Add Employee</button>
+                    <Link to="/employeeslist">Cancel</Link>
+                </div>
+            </form>
         </div>
-      </form>
-    </div>
-  );
+    );
 };
 
 export default EmployeeForm;

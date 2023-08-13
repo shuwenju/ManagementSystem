@@ -12,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using System.ComponentModel.DataAnnotations;
+using ManagementSystem.Models.DbModels;
 
 namespace ManagementSystem.Controllers
 {
@@ -19,17 +20,17 @@ namespace ManagementSystem.Controllers
 	[ApiController]
 	public class AuthenticationController : ControllerBase
 	{
-        private readonly UserManager<IdentityUser> _userManager;
-		private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+		private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IEmailService _emailService;
 		private readonly IConfiguration _configuration;
           
-        public AuthenticationController(UserManager<IdentityUser> userManager, 
+        public AuthenticationController(UserManager<ApplicationUser> userManager, 
                RoleManager<IdentityRole> roleManager,
 			   IEmailService emailService, 
 			   IConfiguration configuration,
-			   SignInManager<IdentityUser> signInManager)
+			   SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -51,9 +52,11 @@ namespace ManagementSystem.Controllers
 			}
 
 			// if user not exist, add to database
-			IdentityUser user = new IdentityUser
+			ApplicationUser user = new ApplicationUser
 			{
-				Email = registerUser.Email,
+                FirstName = registerUser.FirstName,
+                LastName = registerUser.LastName,
+                Email = registerUser.Email,
 				SecurityStamp = Guid.NewGuid().ToString(),
 				UserName = registerUser.Username,
 				//TwoFactorEnabled = true
@@ -153,7 +156,8 @@ namespace ManagementSystem.Controllers
 				return Ok(new
 				{
 					token = new JwtSecurityTokenHandler().WriteToken(jwtToken),
-					expiration = jwtToken.ValidTo
+					expiration = jwtToken.ValidTo,
+					role = userRoles[0]
 				});
 				//return the token
 			}
