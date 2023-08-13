@@ -35,44 +35,6 @@ const EmployeeForm = ({ addEmployee }) => {
 
     };
 
-    return (
-        <div className="em-container">
-            <form onSubmit={handleSubmit}>
-                <h2 className="add_new_employee_header">Add New Employee</h2>
-                <div className="user_info">
-                    <div className="user_detail">
-                        <div className="user_detail_header">
-                            <h3> User details:</h3>
-                        </div>
-                        <div className="user_table">
-                            <table>
-                                <tr>
-                                    <td>Username*</td>
-                                    <td>Role</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input
-                                            type="text"
-                                            id="userName"
-                                            value={userName}
-                                            onChange={(e) => setUserName(e.target.value)}
-                                            required
-                                        />
-                                    </td>
-                                    <td>
-                                        <input
-                                            type="text"
-                                            id="lName"
-                                            value={role}
-                                            onChange={(e) => setRole(e.target.value)}
-                                            required
-                                        />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2">
-// danli_employeeAdd_layout_20230810
 try{
        console.log("New Employee Data =>");
        newEmployee.password="Danli-123";
