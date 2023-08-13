@@ -1,10 +1,21 @@
 import EmployeesList from "./EmployeesList";
 import { useState } from "react";
-export const Employees = (props) => {
+import { useEffect } from "react";
+import axios from "axios";
+export const Employees = () => {
     const [employees, setEmployees] = useState([
-        { fName: "huang", lName: "danli", email: "danli@gmail.com" },
     ]);
+    useEffect(() => {
+        axios.get("https://localhost:44343/api/Authentication/users")
+            .then(response => {
+                setEmployees(response.data);
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+            });
+    }, []);
 
+  
     return (
         <div className="wrapper">
             

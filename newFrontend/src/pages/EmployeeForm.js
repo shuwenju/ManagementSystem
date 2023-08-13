@@ -14,10 +14,10 @@ const EmployeeForm = ({ addEmployee }) => {
   };
 
   const navigate = useNavigate(); //
-  const [userName, setUserName] = useState("");
+  const [username, setUsername] = useState("");
   // const [role, setRole] = useState("");
-  // const [fName, setFName] = useState("");
-  // const [lName, setLName] = useState("");
+   const [firstname, setFirstname] = useState("");
+   const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -26,37 +26,59 @@ const EmployeeForm = ({ addEmployee }) => {
     e.preventDefault();
 
     const newEmployee = {
-      userName,
+      username,
  //     role,
- //     fName,
- //     lName,
+      firstname,
+      lastname,
       email,
       password,
 
     };
+    try{      
+			// Retrieve the JWT token from local storage
+			const token = localStorage.getItem('jwtToken'); // Replace 'yourTokenKey' with your actual token key
+      console.log("New Employee Data =>");
+      newEmployee.password="Danli-123";
+      console.log(newEmployee);
 
-try{
-       console.log("New Employee Data =>");
-       newEmployee.password="Danli-123";
-       console.log(newEmployee);
-       const response = await axios.post('https://localhost:44343/api/authentication/register', newEmployee);
-       console.log(response.data);
-     } catch (error) {
-       console.error(error.response.data);
-     }
-  ;
+			const response = await axios.post(
+				
+        'https://localhost:44343/api/authentication/register', newEmployee,
+				{
+					headers: {
+						Authorization: `Bearer ${token}` // Include the token in the 'Authorization' header
+					}
+				}
+		)
+  
+  
+    console.log(response.data);
+  
+  } catch(error){
+			console.log(error)
+		}
 
 
 
+// try{
+//        console.log("New Employee Data =>");
+//        newEmployee.password="Danli-123";
+//        console.log(newEmployee);
+//        const response = await axios.post('https://localhost:44343/api/authentication/register', newEmployee);
+//        console.log(response.data);
+//      } catch (error) {
+//        console.error(error.response.data);
+//      }
+//   ;
 
     // Clear form inputs
-    setUserName("");
+    setUsername("");
 
     //  setFName("");
     //setLName("");
     setEmail("");
-    
-    navigate("/employees");
+    console.log("jjjjjj");
+    navigate("/admin/employees");
   };
 
   return (
@@ -79,8 +101,8 @@ try{
                     <input
                       type="text"
                       id="userName"
-                      value={userName}
-                      onChange={(e) => setUserName(e.target.value)}
+                      value={username}
+                      onChange={(e) => setUsername(e.target.value)}
                       required
                     />
                   </td>
@@ -120,25 +142,25 @@ try{
                   </td>
                 </tr>
                 <tr>
-                  {/* <td>
+                  <td>
                    
                     <input
                       type="text"
                       id="fName"
-                      value={fName}
-                      onChange={(e) => setFName(e.target.value)}
+                      value={firstname}
+                      onChange={(e) => setFirstname(e.target.value)}
                       required
                     />
-                  </td> */}
-                  {/* <td>
+                  </td>
+                  <td>
                    <input
                       type="text"
                       id="LName"
-                      value={lName}
-                      onChange={(e) => setLName(e.target.value)}
+                      value={lastname}
+                      onChange={(e) => setLastname(e.target.value)}
                       required
                     />
-                  </td> */}
+                  </td>
                 </tr>
                 <tr>
                   <td colSpan="2">
@@ -167,7 +189,7 @@ try{
 
                 <div className="user_confirmation">
                     <button type="submit" className="user_button" _>Add Employee</button>
-                    <Link to="/employeeslist">Cancel</Link>
+                    <Link to="/admin/employees">Cancel</Link>
                 </div>
             </form>
         </div>
