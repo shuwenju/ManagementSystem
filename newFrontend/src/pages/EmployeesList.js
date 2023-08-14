@@ -8,7 +8,7 @@ function EmployeesList({ employees }) {
     <div className="canvas-container">
       <div className="button-container">
         {/* Add Employee button */}
-        <Link to="/add-employee">
+        <Link to="/admin/add-employee">
           <button className="blue-button">Add Employee</button>
         </Link>
       </div>
@@ -20,7 +20,7 @@ function EmployeesList({ employees }) {
               <th scope="col">Username</th>
               <th scope="col">FirstName</th>
               <th scope="col">LastName</th>
-              <th scope="col">Role</th>
+              <th scope="col">Email</th>
               <th scope="col">Etc</th>
             
             </tr>
