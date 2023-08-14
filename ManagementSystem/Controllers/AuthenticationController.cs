@@ -13,6 +13,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using System.ComponentModel.DataAnnotations;
 using ManagementSystem.Models.DbModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace ManagementSystem.Controllers
 {
@@ -39,7 +40,24 @@ namespace ManagementSystem.Controllers
 			_configuration = configuration;
         }
 
-        [HttpPost]
+
+		[HttpGet]
+		[Route("users")]
+		public async Task<IActionResult> GetRegisteredUsers()
+		{
+			var registeredUsers = await _userManager.Users.ToListAsync();
+			var userData = registeredUsers.Select(user => new
+			{
+				user.UserName,
+				user.FirstName,
+				user.LastName,
+				user.Email
+			});
+			return Ok(userData);
+		}
+
+
+		[HttpPost]
 		[Route("register")]
 		public async Task<IActionResult> Register([FromBody] RegisterUser registerUser/*, string role*/)
         {
@@ -156,7 +174,8 @@ namespace ManagementSystem.Controllers
 				return Ok(new
 				{
 					token = new JwtSecurityTokenHandler().WriteToken(jwtToken),
-					expiration = jwtToken.ValidTo
+					expiration = jwtToken.ValidTo,
+					role = userRoles[0]
 				});
 				//return the token
 			}
@@ -268,6 +287,8 @@ namespace ManagementSystem.Controllers
 			
 		}
 
+
+
 		private JwtSecurityToken GetToken(List<Claim> authClaims)
 		{
 			var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
@@ -280,6 +301,8 @@ namespace ManagementSystem.Controllers
 				signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256));
 			return token;
 		}
+
+
 
 	}
 }

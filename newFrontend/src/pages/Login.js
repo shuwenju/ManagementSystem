@@ -8,7 +8,6 @@ import axios from "axios";
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [jwtToken, setJwtToken] = useState("");
   const navigate = useNavigate(); // Create a navigate function
 
   const handleLogin = async (e) => {
@@ -24,24 +23,33 @@ function Login() {
       );
 
       const { token } = response.data;
+      const { role } = response.data;
 
       // Store the token in localStorage
       localStorage.setItem("jwtToken", token);
+      localStorage.setItem("role", role);
 
-      try {
-        // Attempt to access the admin endpoint
-        await axios.get("https://localhost:44343/api/Admin/employees", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        // If the call succeeds, navigate to admin dashboard
+      if (role === "Admin") {
         navigate("/admin");
-      } catch (error) {
-        // If the call fails, navigate to user page
+      }
+      else {
         navigate("/user");
       }
+
+      // try {
+      //   // Attempt to access the admin endpoint
+      //   await axios.get("https://localhost:44343/api/Admin/employees", {
+      //     headers: {
+      //       Authorization: `Bearer ${token}`,
+      //     },
+      //   });
+
+      //   // If the call succeeds, navigate to admin dashboard
+      //   navigate("/admin");
+      // } catch (error) {
+      //   // If the call fails, navigate to user page
+      //   navigate("/user");
+      // }
     } catch (error) {
       // Handle errors, e.g., show error message to the user.
     } //setJwtToken(token);
