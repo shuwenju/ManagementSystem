@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using static System.Reflection.Metadata.BlobBuilder;
 
 namespace ManagementSystem.Models.DbModels
@@ -30,6 +31,8 @@ namespace ManagementSystem.Models.DbModels
         public double CrossAmount { get; set; }
 
         public string ShippingAddress { get; set; } = string.Empty;
+
+        public string OrderStatus { get; set; } = string.Empty;
 
         public ICollection<OrderItem> OrderItems { get; set; }
     }
