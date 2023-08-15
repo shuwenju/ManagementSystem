@@ -12,7 +12,7 @@ const ProductSearch = ({ setInput }) => {
         icon={<i className="fa fa-search text-dark"></i>}
         color="primary"
         onChange={(e) => onChangeSearch(e)}
-        style={{ textAlign: "center", width: "30vw" }}
+        style={{ textAlign: "center", width: "35vw" }}
       />
     </CDBContainer>
   );

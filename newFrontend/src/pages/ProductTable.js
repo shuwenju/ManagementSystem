@@ -59,7 +59,7 @@ const ProductTable = ({ isAdmin, items }) => {
   }
 
   return (
-    <div className="d-flex flex-column mt-5">
+    <div className="d-flex flex-column mt-3">
       <CDBContainer>
         <CDBTable responsive>
           <CDBTableHeader>

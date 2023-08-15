@@ -4,7 +4,6 @@ import ProductTable from "./ProductTable";
 import "../css/Products.css";
 import ProductAddFormModal from "./ProductAddFormModal";
 import axios from "axios";
-import { CDBContainer, CDBAlert } from "cdbreact";
 import Spinner from "../components/Spinner";
 
 export const Products = () => {
