@@ -1,0 +1,22 @@
+.pagination > ul {
+  display: flex;
+  flex-direction: row;
+}
+
+.active > .page-link,
+.page-link.active {
+  background-color: #333;
+}
+
+.page-link {
+  color: #333;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.page-item {
+  list-style-type: none;
+}
