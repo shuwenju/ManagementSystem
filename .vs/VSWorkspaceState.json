@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\ManagementSystem",
+    "\\ManagementSystem\\Models",
+    "\\ManagementSystem\\Models\\DbModels"
+  ],
+  "SelectedNode": "\\ManagementSystem\\Models\\DbModels\\Customer.cs",
+  "PreviewInSolutionExplorer": false
+}
