@@ -2,7 +2,7 @@
 This app allows company to manage users, orders and products with analytic panel.
 
 
-## Order Creatuion
+## Order Creation
 
 Admin/Users should be able to:
 
