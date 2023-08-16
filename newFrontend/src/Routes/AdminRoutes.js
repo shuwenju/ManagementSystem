@@ -12,7 +12,7 @@ import {OrderCreate} from "../pages/Orders/OrderCreate";
 import {OrderDetails} from "../pages/Orders/OrderDetails";
 
 const AdminRoutes = () => {
-
+  
     return (
         <Routes>
             <Route path="/admin" element={<AdminLayout/>}>
