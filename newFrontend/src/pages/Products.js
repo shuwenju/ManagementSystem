@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import ProductTop from "./ProductTop";
 import ProductTable from "./ProductTable";
 import "../css/Products.css";
 import ProductAddFormModal from "./ProductAddFormModal";
 import axios from "axios";
 import Spinner from "../components/Spinner";
+import RoleContext from "../data/RoleContext";
 
 export const Products = () => {
   const [isAdmin, setIsAdmin] = useState(true);
@@ -13,6 +14,13 @@ export const Products = () => {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState(items);
   const [status, setStatus] = useState(false);
+  // const role = useContext(RoleContext);
+  const role = localStorage.getItem('role');
+  const token = localStorage.getItem('jwtToken');
+
+   useEffect(() => {
+     role === "Admin" ? setIsAdmin(true) : setIsAdmin(false);
+   }, []);
 
   useEffect(() => {
     filterItems(input);
@@ -29,9 +37,14 @@ export const Products = () => {
   const getItems = async () => {
     try {
       setStatus(true);
-      const response = await axios.get("https://localhost:7159/api/Items");
+      const response = await axios.get("https://localhost:44343/api/Items",
+      {
+        headers: {
+          Authorization: `Bearer ${token}` // Include the token in the 'Authorization' header
+        }
+      }
+      );
       setItems(response.data);
-      console.log(items);
     } catch (error) {
       console.error(error);
     } finally {
@@ -39,9 +52,9 @@ export const Products = () => {
     }
   };
 
-  useEffect(() => {
-    getItems();
-  }, []);
+   useEffect(() => {
+     getItems();
+   }, []);
 
   const onHandleAddBtnClick = () => {
     setHandleAddFormToggle(true);
@@ -67,7 +80,7 @@ export const Products = () => {
           onHandleAddBtnClick={onHandleAddBtnClick}
           setInput={setInput}
         />
-        <ProductTable isAdmin={isAdmin} items={filteredItems} />
+        <ProductTable isAdmin={isAdmin} items={filteredItems} getItem={getItems} />
         {status ? <Spinner /> : null}
       </div>
     </div>
