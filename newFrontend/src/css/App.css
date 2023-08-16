@@ -11,4 +11,5 @@
     flex: 1 1 auto;
     padding: 4rem 5%;
     background-color: #ebebeb;
+    overflow: auto;
 }
