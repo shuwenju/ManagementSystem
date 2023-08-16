@@ -34,8 +34,8 @@ const ProductAddFormModal = (props) => {
         break;
 
       case "Price":
-        if (!/^\d+(\,\d+)?$/.test(value)) {
-          errorMessage = "Price can only contain digits and at most one comma.";
+        if (!/^\d+(\.\d*)?$/.test(value)) {
+          errorMessage = "Price can only contain digits.";
         }
         break;
 
@@ -70,11 +70,15 @@ const ProductAddFormModal = (props) => {
     }
     setStatus("loading");
     try {
+      console.log(formData);
       const response = await axios.post(
         "https://localhost:7159/api/Items",
         formData
       );
       <SuccessAlert message={response.data.Name} />;
+      if (response.data) {
+        props.onSubmitSuccess();
+      }
     } catch (error) {
       setErrMsg(error.response?.data || "An error occurred");
     } finally {

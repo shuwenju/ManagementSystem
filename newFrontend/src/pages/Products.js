@@ -58,7 +58,7 @@ export const Products = () => {
         <ProductAddFormModal
           show={handleAddFormToggle}
           onHide={() => setHandleAddFormToggle(false)}
-          getItems={getItems}
+          onSubmitSuccess={getItems}
           setHandleAddFormToggle={setHandleAddFormToggle}
         />
       )}
