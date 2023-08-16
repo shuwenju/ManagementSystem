@@ -14,11 +14,13 @@ export const Products = () => {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState(items);
   const [status, setStatus] = useState(false);
-  const role = useContext(RoleContext);
+  // const role = useContext(RoleContext);
+  const role = localStorage.getItem('role');
+  const token = localStorage.getItem('jwtToken');
 
-  // useEffect(() => {
-  //   role === "Admin" ? setIsAdmin(true) : setIsAdmin(false);
-  // }, []);
+   useEffect(() => {
+     role === "Admin" ? setIsAdmin(true) : setIsAdmin(false);
+   }, []);
 
   useEffect(() => {
     filterItems(input);
@@ -35,7 +37,13 @@ export const Products = () => {
   const getItems = async () => {
     try {
       setStatus(true);
-      const response = await axios.get("https://localhost:7159/api/Items");
+      const response = await axios.get("https://localhost:44343/api/Items",
+      {
+        headers: {
+          Authorization: `Bearer ${token}` // Include the token in the 'Authorization' header
+        }
+      }
+      );
       setItems(response.data);
     } catch (error) {
       console.error(error);
@@ -44,9 +52,9 @@ export const Products = () => {
     }
   };
 
-  useEffect(() => {
-    getItems();
-  }, []);
+   useEffect(() => {
+     getItems();
+   }, []);
 
   const onHandleAddBtnClick = () => {
     setHandleAddFormToggle(true);
@@ -72,7 +80,7 @@ export const Products = () => {
           onHandleAddBtnClick={onHandleAddBtnClick}
           setInput={setInput}
         />
-        <ProductTable isAdmin={isAdmin} items={filteredItems} />
+        <ProductTable isAdmin={isAdmin} items={filteredItems} getItem={getItems} />
         {status ? <Spinner /> : null}
       </div>
     </div>

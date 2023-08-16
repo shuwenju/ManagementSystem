@@ -70,11 +70,18 @@ const ProductAddFormModal = (props) => {
     }
     setStatus("loading");
     try {
+      const token = localStorage.getItem('jwtToken');
       const response = await axios.post(
-        "https://localhost:7159/api/Items",
-        formData
+        "https://localhost:44343/api/Items",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}` // Include the token in the 'Authorization' header
+          }
+        }
       );
       <SuccessAlert message={response.data.Name} />;
+      props.getItems();
     } catch (error) {
       setErrMsg(error.response?.data || "An error occurred");
     } finally {

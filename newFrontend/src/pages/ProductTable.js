@@ -10,7 +10,7 @@ import ReactPaginate from "react-paginate";
 import "../css/ProductTable.css";
 import { GrFormPrevious, GrFormNext } from "react-icons/gr";
 
-const ProductTable = ({ isAdmin, items }) => {
+const ProductTable = ({ isAdmin, items,getItems }) => {
   const [itemOffset, setItemOffset] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(5);
 
@@ -72,7 +72,7 @@ const ProductTable = ({ isAdmin, items }) => {
             </tr>
           </CDBTableHeader>
           <CDBTableBody>
-            <Table currentItems={currentItems} />
+            <Table currentItems={currentItems} getItems={getItems} />
           </CDBTableBody>
         </CDBTable>
       </CDBContainer>
