@@ -5,7 +5,7 @@ namespace ManagementSystem.Models.DbModels
     public class Customer
     {
         // initialize navigation property collection in constructor
-       public Customer() => Orders = new HashSet<Order>();
+       //public Customer() => Orders = new HashSet<Order>();
         // primary key property
         public int Id { get; set; }
 
@@ -19,6 +19,6 @@ namespace ManagementSystem.Models.DbModels
         public string Address { get; set; } = string.Empty;
 
         public string PhoneNumber { get; set; } = string.Empty;
-        public ICollection<Order> Orders { get; set; }
+        //public ICollection<Order> Orders { get; set; }
     }
 }
