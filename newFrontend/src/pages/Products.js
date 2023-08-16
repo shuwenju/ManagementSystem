@@ -1,10 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import ProductTop from "./ProductTop";
 import ProductTable from "./ProductTable";
 import "../css/Products.css";
 import ProductAddFormModal from "./ProductAddFormModal";
 import axios from "axios";
 import Spinner from "../components/Spinner";
+import RoleContext from "../data/RoleContext";
 
 export const Products = () => {
   const [isAdmin, setIsAdmin] = useState(true);
@@ -13,6 +14,11 @@ export const Products = () => {
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState(items);
   const [status, setStatus] = useState(false);
+  const role = useContext(RoleContext);
+
+  // useEffect(() => {
+  //   role === "Admin" ? setIsAdmin(true) : setIsAdmin(false);
+  // }, []);
 
   useEffect(() => {
     filterItems(input);
@@ -31,7 +37,6 @@ export const Products = () => {
       setStatus(true);
       const response = await axios.get("https://localhost:7159/api/Items");
       setItems(response.data);
-      console.log(items);
     } catch (error) {
       console.error(error);
     } finally {

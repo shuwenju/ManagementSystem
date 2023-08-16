@@ -2,13 +2,15 @@ import "../css/Login.css";
 import animationGif from "../media/login-animation.gif";
 import goatHead from "../media/goat-head.png";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
+import RoleContext from "../data/RoleContext";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate(); // Create a navigate function
+  const { setRole } = useContext(RoleContext);
 
   const handleLogin = async (e) => {
     // Perform login API call and get the JWT token
@@ -28,11 +30,11 @@ function Login() {
       // Store the token in localStorage
       localStorage.setItem("jwtToken", token);
       localStorage.setItem("role", role);
+      setRole(role);
 
       if (role === "Admin") {
         navigate("/admin");
-      }
-      else {
+      } else {
         navigate("/user");
       }
 
