@@ -50,6 +50,7 @@ export const OrderCreate = () => {
         ]
     });
 
+    // Set Form Validation
     const [formError, setFormError] = useState({
         "customer": false,
         "orderItem": {
