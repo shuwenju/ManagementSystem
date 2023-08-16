@@ -7,6 +7,6 @@ namespace ManagementSystem.Dtos
         public int CustomerId { get; set; }
         public double CrossAmount { get; set; }
         public string ShippingAddress { get; set; } = string.Empty;
-        public ICollection<OrderItemDto> OrderItemDtos { get; set; }
+        public ICollection<OrderItemDto> OrderItems { get; set; }
     }
 }
