@@ -1,9 +1,8 @@
 .formError {
   color: red;
-  font-weight: bold;
 }
 
 .modal-content {
-  width: 80%;
+  width: 60vw;
   margin: auto;
 }
