@@ -12,9 +12,12 @@ using AutoMapper;
 using ManagementSystem.ViewModels;
 using Humanizer;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace ManagementSystem.Controllers
 {
+    [Authorize(Roles = "Admin, User")]
     [Route("api/[controller]")]
     [ApiController]
     public class OrdersController : ControllerBase
@@ -80,9 +83,8 @@ namespace ManagementSystem.Controllers
         [HttpPost]
         public async Task<ActionResult<Order>> PostOrder([FromBody] OrderDto dto)
         {
-            //string currenetUserName = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value;
-            //for testing UserName is "admin" to be change with currenetUserName
-            var authUser = _context.Users.FirstOrDefault(u => u.UserName == "admin");
+            string currenetUserName = User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name).Value;
+            var authUser = _context.Users.FirstOrDefault(u => u.UserName == currenetUserName);
 
             var newOrder = new Order()
             {
@@ -95,7 +97,7 @@ namespace ManagementSystem.Controllers
 
             try
             {
-                foreach (var orderItemDto in dto.OrderItemDtos)
+                foreach (var orderItemDto in dto.OrderItems)
                 {
                     var orderItem = new OrderItem()
                     {

@@ -2,3 +2,8 @@
   color: red;
   font-weight: bold;
 }
+
+.modal-content {
+  width: 80%;
+  margin: auto;
+}
