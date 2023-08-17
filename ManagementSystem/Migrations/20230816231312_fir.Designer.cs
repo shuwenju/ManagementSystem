@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ManagementSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230813034234_add_order_status_col")]
-    partial class add_order_status_col
+    [Migration("20230816231312_fir")]
+    partial class fir
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -100,9 +100,9 @@ namespace ManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a77b674c-2bb5-4805-98a5-5c001c942541",
+                            Id = "bd77a741-9f70-47ed-9a8c-82647481bc1c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5b5eaf00-7df2-4c23-8663-7aa6ddb01839",
+                            ConcurrencyStamp = "d51744b3-a94c-4033-859e-c103be7909c9",
                             Email = "admin@test.com",
                             EmailConfirmed = true,
                             FirstName = "",
@@ -110,9 +110,9 @@ namespace ManagementSystem.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@TEST.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEN6sOxvREgFNiU0g0/S4qtUJ36LKiLGYfXT+3qdgVC71NWHIbS42Wl0n5ChGp+Z+kQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAGgjXmtYdJ7BMtfvZMPwkg8sxKd+y3a/iyUNYUCUtglOT8esBh/zyGAlCl7qvvs+Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "35ea24d3-73da-4952-a557-d8a7bf17eb96",
+                            SecurityStamp = "670bc38b-799b-4c19-8188-ce194289b052",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -267,14 +267,14 @@ namespace ManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "aa9f737f-f648-4c1f-8225-00246e9b060b",
+                            Id = "53fc4c29-f706-4854-900e-aee889d6ddcd",
                             ConcurrencyStamp = "1",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "984c5660-4132-4d5d-8e41-f15d8d33dadb",
+                            Id = "2bc40c5c-03fd-4ff1-ab98-d2a6c1dde155",
                             ConcurrencyStamp = "2",
                             Name = "User",
                             NormalizedName = "User"
@@ -370,8 +370,8 @@ namespace ManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "a77b674c-2bb5-4805-98a5-5c001c942541",
-                            RoleId = "aa9f737f-f648-4c1f-8225-00246e9b060b"
+                            UserId = "bd77a741-9f70-47ed-9a8c-82647481bc1c",
+                            RoleId = "53fc4c29-f706-4854-900e-aee889d6ddcd"
                         });
                 });
 

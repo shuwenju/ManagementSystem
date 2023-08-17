@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/A6KTFk4Fy8vD37P2oK9JZNkkqzDuDGpoxW+ibId+GX0q5vGZQAG4HC1LI7BQ2RJ84dwnYLfBzx0ZCjqw6capg==",
+  "dgSpecHash": "xaJXB0kK8ESJMPRF5JZE7UxVwvWlole9afkzXmyJuPi0nCvatz+6yb+P1toAo2+hzDyAVjDeadBxOTz7MtN4aw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\shuwe\\source\\IntegrationProject\\ManagementSystem\\Management.Service\\Management.Service.csproj",
+  "projectFilePath": "C:\\Users\\shuwe\\source\\Integration\\ManagementSystem\\Management.Service\\Management.Service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\shuwe\\.nuget\\packages\\mailkit\\3.2.0\\mailkit.3.2.0.nupkg.sha512",
     "C:\\Users\\shuwe\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.0\\microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
