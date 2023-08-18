@@ -6,16 +6,16 @@ import { useState } from "react";
 function EmployeesList({ employees }) {
 
  
-  const roleOptions = ["Admin", "User"];
+  // const roleOptions = ["Admin", "User"];
 
-  const [selectedRoles, setSelectedRoles] = useState({});
+  // const [selectedRoles, setSelectedRoles] = useState({});
 
-  const handleRoleChange = (employeeIndex, role) => {
-    setSelectedRoles((prevSelectedRoles) => ({
-      ...prevSelectedRoles,
-      [employeeIndex]: role,
-    }));
-  };
+  // const handleRoleChange = (employeeIndex, role) => {
+  //   setSelectedRoles((prevSelectedRoles) => ({
+  //     ...prevSelectedRoles,
+  //     [employeeIndex]: role,
+  //   }));
+  // };
 
 
 
@@ -38,6 +38,7 @@ function EmployeesList({ employees }) {
               <th scope="col">LastName</th>
               <th scope="col">Email</th>
               <th scope="col">RoleType</th>
+              <th scope="col">Locked</th>
               <th scope="col">Edit</th>
               <th scope="col">Delete</th>
                 
@@ -52,8 +53,8 @@ function EmployeesList({ employees }) {
                 index={index}
                 // edit={edit}
                 // deleteEmployee={deleteEmployee}
-                selectedRole={selectedRoles[index]}
-                onRoleChange={handleRoleChange}
+                // selectedRole={selectedRoles[index]}
+                // onRoleChange={handleRoleChange}
               />
             ))}
           </tbody>

@@ -52,7 +52,8 @@ namespace ManagementSystem.Controllers
 				user.FirstName,
 				user.LastName,
 				user.Email,
-				user.RoleType
+				user.RoleType,
+				user.LockoutEnd,
 			});
 			return Ok(userData);
 		}

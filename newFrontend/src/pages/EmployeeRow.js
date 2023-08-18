@@ -46,6 +46,7 @@ function EmployeeRow({ employee, index, edit, deleteEmployee }) {
       <td>{employee.lastName}</td>
       <td>{employee.email}</td>
       <td>{employee.roleType}</td>
+      <td>{employee.lockoutEnd}</td>
       
 
       <td>
@@ -61,7 +62,7 @@ function EmployeeRow({ employee, index, edit, deleteEmployee }) {
                       fas
                       icon="trash"
                       style={{ color: "red", cursor: "pointer" }}
-                      onClick={() => handleDelete(employee.id)}
+                      onClick={() => handleDelete(employee.username)}
                     />
                   </td>
 
