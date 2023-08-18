@@ -17,21 +17,62 @@ const CustomerAddFormModal = (props) => {
     phoneNumber: "",
   });
 
-  const handleInputChange = (e) => {
-    if (e.target.value !== "") {
-      setStatus("typing");
-      setErrMsg("");
+  const [errors, setErrors] = useState( {
+    name: "",
+    email: "",
+    phoneNumber: "",
+  });
+
+  const ERROR_MESSAGES = {
+    INVALID_NAME: "Name can only contain letters.",
+    INVALID_EMAIL: "Please enter valid email format.",
+    INVALID_PHONENUMBER: "Phone number should be all digits.",
+  };
+
+  const validateField = (name, value) => {
+    let errorMessage = "";
+
+    switch (name) {
+      case "name":
+        if (!/^[a-zA-Z\s]*$/.test(value)) {
+          errorMessage = ERROR_MESSAGES.INVALID_NAME;
+        }
+        break;
+
+      case "email":
+        if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
+          errorMessage = ERROR_MESSAGES.INVALID_EMAIL;
+        }
+        break;
+
+      case "phoneNumber":
+        if (!/^(?:\d{10}|\d{3}-\d{3}-\d{4})$/.test(value)) {
+          errorMessage = ERROR_MESSAGES.INVALID_PHONENUMBER;
+        }
+        break;
+
+      default:
+        break;
     }
+
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: errorMessage }));
+  };
+
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
+    validateField(name, value);
   };
 
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (Object.values(errors).some((error) => error !== "")) {
+      return;
+    }
     setStatus("loading");
 
     try {
@@ -68,22 +109,26 @@ const CustomerAddFormModal = (props) => {
           <Form.Group className="mb-3" controlId="formBasicName">
             <Form.Label>Name</Form.Label>
             <Form.Control
+              isInvalid={errors.name !== ""}
               type="text"
               name="name"
               value={formData.name}
               onChange={handleInputChange}
             />
+             <p className="formError">{errors.name}</p>
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicDescription">
+          <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email</Form.Label>
             <Form.Control
+              isInvalid={errors.email !== ""}
               type="email"
               name="email"
               value={formData.email}
               onChange={handleInputChange}
             />
+             <p className="formError">{errors.email}</p>
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicPrice">
+          <Form.Group className="mb-3" controlId="formBasicAddress">
             <Form.Label>Address</Form.Label>
             <Form.Control
               type="text"
@@ -92,14 +137,16 @@ const CustomerAddFormModal = (props) => {
               onChange={handleInputChange}
             />
           </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicQuantity">
+          <Form.Group className="mb-3" controlId="formBasicPhoneNumber">
             <Form.Label>Phone</Form.Label>
             <Form.Control
+              isInvalid={errors.phoneNumber !== ""}
               type="text"
               value={formData.phoneNumber}
               name="phoneNumber"
               onChange={handleInputChange}
             />
+             <p className="formError">{errors.phoneNumber}</p>
           </Form.Group>
           <p className={errMsg ? "formError" : null}>{errMsg}</p>
           <CDBBtn type="submit" variant="primary" role="button">

@@ -39,6 +39,13 @@ const CustomerTable = ({ isAdmin, items, getItems }) => {
   };
   const handleDelete = async (customerId) => {
     try {
+      // Ask for confirmation before proceeding
+      const shouldDelete = window.confirm("Are you sure you want to delete this record?");
+  
+      if (!shouldDelete) {
+        return; // If user cancels deletion, exit the function
+      }
+  
       const token = localStorage.getItem('jwtToken');
       await axios.delete(`https://localhost:44343/api/Customers/${customerId}`, {
         headers: {
@@ -52,7 +59,7 @@ const CustomerTable = ({ isAdmin, items, getItems }) => {
       console.error(error);
     }
   };
-    
+  
 
     return (
       <>

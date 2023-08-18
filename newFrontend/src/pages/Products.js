@@ -1,30 +1,26 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import ProductTop from "./ProductTop";
 import ProductTable from "./ProductTable";
 import "../css/Products.css";
 import ProductAddFormModal from "./ProductAddFormModal";
 import axios from "axios";
 import Spinner from "../components/Spinner";
-import RoleContext from "../data/RoleContext";
 
 export const Products = () => {
-  const [isAdmin, setIsAdmin] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [handleAddFormToggle, setHandleAddFormToggle] = useState(false);
   const [input, setInput] = useState("");
   const [items, setItems] = useState([]);
   const [filteredItems, setFilteredItems] = useState(items);
-  const [status, setStatus] = useState(false);
-  // const role = useContext(RoleContext);
-  const role = localStorage.getItem('role');
-  const token = localStorage.getItem('jwtToken');
+  const [isLoading, setIsLoading] = useState(false);
 
-   useEffect(() => {
-     role === "Admin" ? setIsAdmin(true) : setIsAdmin(false);
-   }, []);
+  const role = localStorage.getItem("role");
+  const token = localStorage.getItem("jwtToken");
 
   useEffect(() => {
-    filterItems(input);
-  }, [input, items]);
+    if (role === "Admin") setIsAdmin(true);
+    getItems();
+  }, []);
 
   const filterItems = (input) => {
     const lowerInput = input.toLowerCase();
@@ -36,25 +32,24 @@ export const Products = () => {
 
   const getItems = async () => {
     try {
-      setStatus(true);
-      const response = await axios.get("https://localhost:44343/api/Items",
-      {
+      setIsLoading(true);
+      const response = await axios.get("https://localhost:44343/api/Items", {
         headers: {
-          Authorization: `Bearer ${token}` // Include the token in the 'Authorization' header
-        }
-      }
-      );
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setItems(response.data);
     } catch (error) {
       console.error(error);
+      // Optionally: Notify the user about the error
     } finally {
-      setStatus(false);
+      setIsLoading(false);
     }
   };
 
-   useEffect(() => {
-     getItems();
-   }, []);
+  useEffect(() => {
+    filterItems(input);
+  }, [input, items]);
 
   const onHandleAddBtnClick = () => {
     setHandleAddFormToggle(true);
@@ -70,18 +65,18 @@ export const Products = () => {
           setHandleAddFormToggle={setHandleAddFormToggle}
         />
       )}
-
-      <div
-        className="container flex-column position-relative"
-        id="pageContainer"
-      >
+      <div className="row flex-column position-relative" id="pageContainer">
         <ProductTop
           isAdmin={isAdmin}
           onHandleAddBtnClick={onHandleAddBtnClick}
           setInput={setInput}
         />
-        <ProductTable isAdmin={isAdmin} items={filteredItems} getItem={getItems} />
-        {status ? <Spinner /> : null}
+        <ProductTable
+          isAdmin={isAdmin}
+          items={filteredItems}
+          getItem={getItems}
+        />
+        {isLoading ? <Spinner /> : null}
       </div>
     </div>
   );

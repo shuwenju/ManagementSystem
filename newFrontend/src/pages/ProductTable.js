@@ -10,7 +10,7 @@ import ReactPaginate from "react-paginate";
 import "../css/ProductTable.css";
 import { GrFormPrevious, GrFormNext } from "react-icons/gr";
 
-const ProductTable = ({ isAdmin, items,getItems }) => {
+const ProductTable = ({ isAdmin, items, getItems }) => {
   const [itemOffset, setItemOffset] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(5);
 
@@ -59,7 +59,7 @@ const ProductTable = ({ isAdmin, items,getItems }) => {
   }
 
   return (
-    <div className="d-flex flex-column mt-3">
+    <div className="row m-auto d-flex flex-column mt-3">
       <CDBContainer>
         <CDBTable responsive>
           <CDBTableHeader>

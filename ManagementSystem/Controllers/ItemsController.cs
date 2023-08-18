@@ -13,7 +13,7 @@ using System.Data;
 
 namespace ManagementSystem.Controllers
 {
-	[Authorize(Roles = "Admin")]
+	
 	[Route("api/[controller]")]
     [ApiController]
     public class ItemsController : ControllerBase
@@ -26,6 +26,7 @@ namespace ManagementSystem.Controllers
         }
 
         // GET: api/Items
+        [Authorize(Roles = "Admin, User")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Item>>> GetItems()
         {
@@ -37,6 +38,7 @@ namespace ManagementSystem.Controllers
         }
 
         // GET: api/Items/5
+        [Authorize(Roles = "Admin, User")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Item>> GetItem([FromRoute] int id)
         {
@@ -55,6 +57,7 @@ namespace ManagementSystem.Controllers
         }
 
         // POST: api/Items
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<ActionResult> PostItem([FromBody] ItemDto dto)
         {
@@ -72,6 +75,7 @@ namespace ManagementSystem.Controllers
         }
 
         // PUT: api/Items/id
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutItem([FromRoute] int id, [FromBody] ItemDto dto)
         {
@@ -93,6 +97,7 @@ namespace ManagementSystem.Controllers
         }
 
         // DELETE: api/Items/id
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteItem(int id)
         {

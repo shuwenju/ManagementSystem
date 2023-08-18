@@ -7,7 +7,7 @@
 namespace ManagementSystem.Migrations
 {
     /// <inheritdoc />
-    public partial class add_order_status_col : Migration
+    public partial class fir : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -44,19 +44,19 @@ namespace ManagementSystem.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "984c5660-4132-4d5d-8e41-f15d8d33dadb", "2", "User", "User" },
-                    { "aa9f737f-f648-4c1f-8225-00246e9b060b", "1", "Admin", "Admin" }
+                    { "2bc40c5c-03fd-4ff1-ab98-d2a6c1dde155", "2", "User", "User" },
+                    { "53fc4c29-f706-4854-900e-aee889d6ddcd", "1", "Admin", "Admin" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "a77b674c-2bb5-4805-98a5-5c001c942541", 0, "5b5eaf00-7df2-4c23-8663-7aa6ddb01839", "admin@test.com", true, "", "", false, null, "ADMIN@TEST.COM", "ADMIN", "AQAAAAEAACcQAAAAEN6sOxvREgFNiU0g0/S4qtUJ36LKiLGYfXT+3qdgVC71NWHIbS42Wl0n5ChGp+Z+kQ==", null, false, "35ea24d3-73da-4952-a557-d8a7bf17eb96", false, "admin" });
+                values: new object[] { "bd77a741-9f70-47ed-9a8c-82647481bc1c", 0, "d51744b3-a94c-4033-859e-c103be7909c9", "admin@test.com", true, "", "", false, null, "ADMIN@TEST.COM", "ADMIN", "AQAAAAEAACcQAAAAEAGgjXmtYdJ7BMtfvZMPwkg8sxKd+y3a/iyUNYUCUtglOT8esBh/zyGAlCl7qvvs+Q==", null, false, "670bc38b-799b-4c19-8188-ce194289b052", false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "aa9f737f-f648-4c1f-8225-00246e9b060b", "a77b674c-2bb5-4805-98a5-5c001c942541" });
+                values: new object[] { "53fc4c29-f706-4854-900e-aee889d6ddcd", "bd77a741-9f70-47ed-9a8c-82647481bc1c" });
         }
 
         /// <inheritdoc />
@@ -65,22 +65,22 @@ namespace ManagementSystem.Migrations
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "984c5660-4132-4d5d-8e41-f15d8d33dadb");
+                keyValue: "2bc40c5c-03fd-4ff1-ab98-d2a6c1dde155");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUserRoles",
                 keyColumns: new[] { "RoleId", "UserId" },
-                keyValues: new object[] { "aa9f737f-f648-4c1f-8225-00246e9b060b", "a77b674c-2bb5-4805-98a5-5c001c942541" });
+                keyValues: new object[] { "53fc4c29-f706-4854-900e-aee889d6ddcd", "bd77a741-9f70-47ed-9a8c-82647481bc1c" });
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "aa9f737f-f648-4c1f-8225-00246e9b060b");
+                keyValue: "53fc4c29-f706-4854-900e-aee889d6ddcd");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "a77b674c-2bb5-4805-98a5-5c001c942541");
+                keyValue: "bd77a741-9f70-47ed-9a8c-82647481bc1c");
 
             migrationBuilder.DropColumn(
                 name: "OrderStatus",

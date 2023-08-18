@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "h7ma3EVXkHmegPpslMNLgaTemOump1dEdyhwHHIO5QAusuNVqdMYCjqKyVbuxQUYUsxYF1a65UoHci9eSPgkrw==",
+  "dgSpecHash": "DwzsEyAebBy3rFugpRiERzIjgWKELNdpSuLVcnrPI8TtFFmP+C+5ON2u+nQPyoKkpxY4N+bmyFtPT9U6bopWXA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\shuwe\\source\\IntegrationProject\\ManagementSystem\\ManagementSystem\\ManagementSystem.csproj",
+  "projectFilePath": "C:\\Users\\shuwe\\source\\Integration\\ManagementSystem\\ManagementSystem\\ManagementSystem.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\shuwe\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\shuwe\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

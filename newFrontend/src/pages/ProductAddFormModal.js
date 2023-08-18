@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Spinner from "../components/Spinner";
@@ -8,7 +8,7 @@ import axios from "axios";
 import SuccessAlert from "./SuccessAlert";
 
 const ProductAddFormModal = (props) => {
-  const [status, setStatus] = useState("empty");
+  const [loadingStatus, setLoadingStatus] = useState("empty");
   const [errMsg, setErrMsg] = useState("");
   const [formData, setFormData] = useState({
     Name: "",
@@ -23,28 +23,31 @@ const ProductAddFormModal = (props) => {
     QuantityInStock: "",
   });
 
+  const ERROR_MESSAGES = {
+    INVALID_NAME: "Item name can only contain letters.",
+    INVALID_PRICE: "Price should be a valid price.",
+    INVALID_QUANTITY: "Quantity should be between 0 and 999.",
+  };
+
   const validateField = (name, value) => {
     let errorMessage = "";
 
     switch (name) {
       case "Name":
         if (!/^[a-zA-Z\s]*$/.test(value)) {
-          errorMessage = "Item name can only contain letters.";
+          errorMessage = ERROR_MESSAGES.INVALID_NAME;
         }
         break;
-
       case "Price":
-        if (!/^\d+(\,\d+)?$/.test(value)) {
-          errorMessage = "Price can only contain digits and at most one comma.";
+        if (!/^\d+(\.\d*)?$/.test(value)) {
+          errorMessage = ERROR_MESSAGES.INVALID_PRICE;
         }
         break;
-
       case "QuantityInStock":
-        if (value > 999) {
-          errorMessage = "Quantity can't exceed 999.";
+        if (value < 0 || value > 999) {
+          errorMessage = ERROR_MESSAGES.INVALID_QUANTITY;
         }
         break;
-
       default:
         break;
     }
@@ -58,34 +61,32 @@ const ProductAddFormModal = (props) => {
       ...prevData,
       [name]: value,
     }));
-
     validateField(name, value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (Object.values(errors).some((error) => error !== "")) {
       return;
     }
-    setStatus("loading");
+    setLoadingStatus("loading");
     try {
-      const token = localStorage.getItem('jwtToken');
+      const token = localStorage.getItem("jwtToken");
       const response = await axios.post(
         "https://localhost:44343/api/Items",
         formData,
         {
           headers: {
-            Authorization: `Bearer ${token}` // Include the token in the 'Authorization' header
-          }
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
-      <SuccessAlert message={response.data.Name} />;
       props.getItems();
+      <SuccessAlert message={response.data.Name} />;
     } catch (error) {
       setErrMsg(error.response?.data || "An error occurred");
     } finally {
-      setStatus("empty");
+      setLoadingStatus("empty");
     }
     props.setHandleAddFormToggle(false);
   };
@@ -104,6 +105,7 @@ const ProductAddFormModal = (props) => {
               <Form.Group className="mb-3" controlId="formBasicName">
                 <Form.Label>Item Name</Form.Label>
                 <Form.Control
+                  isInvalid={errors.Name !== ""}
                   type="text"
                   name="Name"
                   value={formData.Name}
@@ -117,6 +119,7 @@ const ProductAddFormModal = (props) => {
               <Form.Group className="mb-3" controlId="formBasicDescription">
                 <Form.Label>Item Description</Form.Label>
                 <Form.Control
+                  isInvalid={errors.Description !== ""}
                   as="textarea"
                   name="Description"
                   value={formData.Description}
@@ -130,6 +133,7 @@ const ProductAddFormModal = (props) => {
               <Form.Group className="mb-3" controlId="formBasicPrice">
                 <Form.Label>Item Price</Form.Label>
                 <Form.Control
+                  isInvalid={errors.Price !== ""}
                   type="text"
                   name="Price"
                   value={formData.Price}
@@ -143,6 +147,7 @@ const ProductAddFormModal = (props) => {
               <Form.Group className="mb-3" controlId="formBasicQuantity">
                 <Form.Label>Item Quantity</Form.Label>
                 <Form.Control
+                  isInvalid={errors.QuantityInStock !== ""}
                   type="number"
                   value={formData.QuantityInStock}
                   name="QuantityInStock"
@@ -160,7 +165,7 @@ const ProductAddFormModal = (props) => {
             </div>
           </Form>
         </Modal.Body>
-        {status === "loading" && <Spinner />}
+        {loadingStatus === "loading" && <Spinner />}
       </Modal>
     </div>
   );
