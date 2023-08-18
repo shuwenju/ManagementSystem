@@ -4,6 +4,7 @@ using ManagementSystem.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ManagementSystem.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230818174406_AddRoleTypeColumn")]
+    partial class AddRoleTypeColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,9 +103,9 @@ namespace ManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b4fa2163-c29c-4bc2-b2d9-5bbd81150a1b",
+                            Id = "63c27a02-c812-4fbe-9d24-a023f378046c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "78fe3c33-2016-4f90-b55d-87c39c9b715d",
+                            ConcurrencyStamp = "17f43f52-8249-4d9b-a6a5-7b2a70b0264d",
                             Email = "admin@test.com",
                             EmailConfirmed = true,
                             FirstName = "",
@@ -110,9 +113,9 @@ namespace ManagementSystem.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@TEST.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEIomhmPPfTS6FpStedhfhUCvZpEVc01gOMnl/P/Hz+CemX2Wq1sAP+M53s9oX1bs2w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAECk86bCkmvzJikmTje3O2dFIqhbs/EVFNEDZwcvw4aSjono+Nym8FO42tS7jigDuDA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "49abd522-1d04-4302-9c94-5811b55f5074",
+                            SecurityStamp = "0baf1cb7-a8a0-447b-b40d-a45471ca5cb7",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -267,14 +270,14 @@ namespace ManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6a5ab776-440c-4b45-be4c-6b3fa5ce305a",
+                            Id = "661b6abd-c393-4dde-880d-8e9cc5ed51b2",
                             ConcurrencyStamp = "1",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "1037dfd2-6c22-4801-842e-6bb138578c41",
+                            Id = "72adec77-e115-44a3-af92-b19ee91a3305",
                             ConcurrencyStamp = "2",
                             Name = "User",
                             NormalizedName = "User"
@@ -370,8 +373,8 @@ namespace ManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "b4fa2163-c29c-4bc2-b2d9-5bbd81150a1b",
-                            RoleId = "6a5ab776-440c-4b45-be4c-6b3fa5ce305a"
+                            UserId = "63c27a02-c812-4fbe-9d24-a023f378046c",
+                            RoleId = "661b6abd-c393-4dde-880d-8e9cc5ed51b2"
                         });
                 });
 
