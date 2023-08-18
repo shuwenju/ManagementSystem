@@ -2,8 +2,24 @@ import React from "react";
 import EmployeeRow from "./EmployeeRow";
 import { Link } from "react-router-dom";
 import "../css/EmployeesList.css";
-
+import { useState } from "react";
 function EmployeesList({ employees }) {
+
+ 
+  const roleOptions = ["Admin", "User"];
+
+  const [selectedRoles, setSelectedRoles] = useState({});
+
+  const handleRoleChange = (employeeIndex, role) => {
+    setSelectedRoles((prevSelectedRoles) => ({
+      ...prevSelectedRoles,
+      [employeeIndex]: role,
+    }));
+  };
+
+
+
+
   return (
     <div className="canvas-container">
       <div className="button-container">
@@ -21,7 +37,10 @@ function EmployeesList({ employees }) {
               <th scope="col">FirstName</th>
               <th scope="col">LastName</th>
               <th scope="col">Email</th>
-              <th scope="col">Etc</th>
+              <th scope="col">RoleType</th>
+              <th scope="col">Edit</th>
+              <th scope="col">Delete</th>
+                
             
             </tr>
           </thead>
@@ -33,6 +52,8 @@ function EmployeesList({ employees }) {
                 index={index}
                 // edit={edit}
                 // deleteEmployee={deleteEmployee}
+                selectedRole={selectedRoles[index]}
+                onRoleChange={handleRoleChange}
               />
             ))}
           </tbody>
