@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import "./EmployeeForm.css";
 import axios from "axios";
-import '../css/EmployeeRow.css'
+
 // danli_employeeAdd_layout_20230810
 const EmployeeForm = ({ addEmployee }) => {
   const [selectedRole, setSelectedRole] = useState("Admin"); 
