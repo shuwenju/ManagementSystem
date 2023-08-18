@@ -2,10 +2,10 @@ import React, {useState} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import "./EmployeeForm.css";
 import axios from "axios";
-
+import '../css/EmployeeRow.css'
 // danli_employeeAdd_layout_20230810
 const EmployeeForm = ({ addEmployee }) => {
-
+  const [selectedRole, setSelectedRole] = useState("Admin"); 
   const [sendEmail, setSendEmail] = useState(false);
 
   const handleCheckboxChange = () => {
@@ -20,18 +20,19 @@ const EmployeeForm = ({ addEmployee }) => {
    const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [roletype,setRoletype] = useState(""); 
 // danli_employeeAdd_layout_20230810
   const handleSubmit =async (e) => {
     e.preventDefault();
 
     const newEmployee = {
       username,
- //     role,
+
       firstname,
       lastname,
       email,
       password,
+      roletype,
 
     };
     try{      
@@ -39,6 +40,7 @@ const EmployeeForm = ({ addEmployee }) => {
 			const token = localStorage.getItem('jwtToken'); // Replace 'yourTokenKey' with your actual token key
       console.log("New Employee Data =>");
       newEmployee.password="Danli-123";
+      newEmployee.roletype=selectedRole;
       console.log(newEmployee);
 
 			const response = await axios.post(
@@ -57,25 +59,7 @@ const EmployeeForm = ({ addEmployee }) => {
   } catch(error){
 			console.log(error)
 		}
-
-
-
-// try{
-//        console.log("New Employee Data =>");
-//        newEmployee.password="Danli-123";
-//        console.log(newEmployee);
-//        const response = await axios.post('https://localhost:44343/api/authentication/register', newEmployee);
-//        console.log(response.data);
-//      } catch (error) {
-//        console.error(error.response.data);
-//      }
-//   ;
-
-    // Clear form inputs
     setUsername("");
-
-    //  setFName("");
-    //setLName("");
     setEmail("");
     console.log("jjjjjj");
     navigate("/admin/employees");
@@ -109,12 +93,26 @@ const EmployeeForm = ({ addEmployee }) => {
                   {/* <td>
                     <input
                       type="text"
-                      id="lName"
-                      value={role}
-                      onChange={(e) => setRole(e.target.value)}
+                      id="roleType"
+                      value={roletype}
+                      onChange={(e) => setRoletype(e.target.value)}
                       required
                     />
                   </td> */}
+
+<td>
+        <select 
+           value={selectedRole}
+           onChange={(e) => setSelectedRole(e.target.value)}
+        >
+          <option value="Admin" >Admin</option>
+          <option value="User">User</option>
+        </select>
+      </td>
+
+
+
+
                 </tr>
                 <tr>
                   <td colSpan="2">

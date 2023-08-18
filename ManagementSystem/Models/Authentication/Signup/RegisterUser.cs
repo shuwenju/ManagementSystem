@@ -19,5 +19,8 @@ namespace ManagementSystem.Models.Authentication.Signup
 
 		[Required(ErrorMessage = "Password is required")]
 		public string? Password { get; set; }
+
+		public string RoleType { get; set; }
+
 	}
 }

@@ -51,7 +51,8 @@ namespace ManagementSystem.Controllers
 				user.UserName,
 				user.FirstName,
 				user.LastName,
-				user.Email
+				user.Email,
+				user.RoleType
 			});
 			return Ok(userData);
 		}
@@ -72,11 +73,13 @@ namespace ManagementSystem.Controllers
 			// if user not exist, add to database
 			ApplicationUser user = new ApplicationUser
 			{
-                FirstName = registerUser.FirstName,
-                LastName = registerUser.LastName,
-                Email = registerUser.Email,
+				FirstName = registerUser.FirstName,
+				LastName = registerUser.LastName,
+				Email = registerUser.Email,
 				SecurityStamp = Guid.NewGuid().ToString(),
 				UserName = registerUser.Username,
+				RoleType = registerUser.RoleType
+
 				//TwoFactorEnabled = true
 			};
 
