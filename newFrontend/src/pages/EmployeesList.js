@@ -38,6 +38,8 @@ function EmployeesList({ employees }) {
               <th scope="col">LastName</th>
               <th scope="col">Email</th>
               <th scope="col">RoleType</th>
+              <th scope="col">IsLocked</th>
+              
               <th scope="col">Edit</th>
               <th scope="col">Delete</th>
                 

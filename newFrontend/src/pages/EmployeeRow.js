@@ -46,6 +46,8 @@ function EmployeeRow({ employee, index, edit, deleteEmployee }) {
       <td>{employee.lastName}</td>
       <td>{employee.email}</td>
       <td>{employee.roleType}</td>
+      <td>{employee.isLocked}</td>
+      
       
 
       <td>

@@ -13,7 +13,7 @@ namespace ManagementSystem.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
 
-			migrationBuilder.AddColumn<int>(
+			migrationBuilder.AddColumn<string>(
 		name: "IsLocked",
 		table: "AspNetUsers",
 		nullable: true); // Could be null
