@@ -140,6 +140,7 @@ namespace ManagementSystem.Controllers
 				user.Email,
 				user.RoleType,
 				user.IsLocked,
+				user.PasswordHash,
 
 			});
 			return Ok(userData);
