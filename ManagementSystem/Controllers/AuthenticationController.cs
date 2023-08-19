@@ -157,8 +157,13 @@ namespace ManagementSystem.Controllers
 
 			if (user != null && await _userManager.CheckPasswordAsync(user,loginModel.Password) && user.EmailConfirmed)
 			{
-				//claimlist creation
-				var authClaims = new List<Claim>
+                if (user.IsLocked == "1")
+                {
+                    return Unauthorized(new { title = "Unauthorized: Account is locked", status = 401 });
+                }
+
+                //claimlist creation
+                var authClaims = new List<Claim>
 				{
 					new Claim(ClaimTypes.Name, user.UserName),
 					new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),

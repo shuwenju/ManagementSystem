@@ -84,5 +84,9 @@
     color: #ffffff;
     border: black;
     border-radius: 4px;
+}
 
+.error-message {
+    color: red;
+    margin-top: 10px;
 }
