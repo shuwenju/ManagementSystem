@@ -1,28 +1,27 @@
-import React, {useState} from "react";
-import {Link, useNavigate} from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./EmployeeForm.css";
 import axios from "axios";
 
 // danli_employeeAdd_layout_20230810
 const EmployeeForm = ({ addEmployee }) => {
-  const [selectedRole, setSelectedRole] = useState("Admin"); 
+  const [selectedRole, setSelectedRole] = useState("Admin");
   const [sendEmail, setSendEmail] = useState(false);
 
   const handleCheckboxChange = () => {
     setSendEmail(!sendEmail);
-
   };
 
   const navigate = useNavigate(); //
   const [username, setUsername] = useState("");
   // const [role, setRole] = useState("");
-   const [firstname, setFirstname] = useState("");
-   const [lastname, setLastname] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [roletype,setRoletype] = useState(""); 
-// danli_employeeAdd_layout_20230810
-  const handleSubmit =async (e) => {
+  const [roletype, setRoletype] = useState("");
+  // danli_employeeAdd_layout_20230810
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newEmployee = {
@@ -33,32 +32,29 @@ const EmployeeForm = ({ addEmployee }) => {
       email,
       password,
       roletype,
-
     };
-    try{      
-			// Retrieve the JWT token from local storage
-			const token = localStorage.getItem('jwtToken'); // Replace 'yourTokenKey' with your actual token key
+    try {
+      // Retrieve the JWT token from local storage
+      const token = localStorage.getItem("jwtToken"); // Replace 'yourTokenKey' with your actual token key
       console.log("New Employee Data =>");
-      newEmployee.password="Danli-123";
-      newEmployee.roletype=selectedRole;
+    // newEmployee.password = "Danli-123";
+      newEmployee.roletype = selectedRole;
       console.log(newEmployee);
 
-			const response = await axios.post(
-				
-        'https://localhost:44343/api/authentication/register', newEmployee,
-				{
-					headers: {
-						Authorization: `Bearer ${token}` // Include the token in the 'Authorization' header
-					}
-				}
-		)
-  
-  
-    console.log(response.data);
-  
-  } catch(error){
-			console.log(error)
-		}
+      const response = await axios.post(
+        "https://localhost:44343/api/authentication/register",
+        newEmployee,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Include the token in the 'Authorization' header
+          },
+        }
+      );
+
+      console.log(response.data);
+    } catch (error) {
+      console.log(error);
+    }
     setUsername("");
     setEmail("");
     console.log("jjjjjj");
@@ -80,6 +76,7 @@ const EmployeeForm = ({ addEmployee }) => {
                   <td>Username*</td>
                   <td>Role</td>
                 </tr>
+
                 <tr>
                   <td>
                     <input
@@ -90,39 +87,35 @@ const EmployeeForm = ({ addEmployee }) => {
                       required
                     />
                   </td>
-                  {/* <td>
-                    <input
+                  <td>
+                    <select
+                      value={selectedRole}
+                      onChange={(e) => setSelectedRole(e.target.value)}
+                    >
+                      <option value="Admin">Admin</option>
+                      <option value="User">User</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Password*</td>
+                  </tr><tr>
+                  <td><input
                       type="text"
-                      id="roleType"
-                      value={roletype}
-                      onChange={(e) => setRoletype(e.target.value)}
+                      id="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       required
-                    />
-                  </td> */}
-
-<td>
-        <select 
-           value={selectedRole}
-           onChange={(e) => setSelectedRole(e.target.value)}
-        >
-          <option value="Admin" >Admin</option>
-          <option value="User">User</option>
-        </select>
-      </td>
-
-
-
-
+                    /></td>
                 </tr>
                 <tr>
                   <td colSpan="2">
-                   
                     <label htmlFor="email">Email*</label>
                   </td>
                 </tr>
                 <tr>
                   <td colSpan="2">
-                    <input 
+                    <input
                       type="email"
                       id="email"
                       value={email}
@@ -133,15 +126,14 @@ const EmployeeForm = ({ addEmployee }) => {
                 </tr>
                 <tr>
                   <td>
-                    <label >First Name</label>
+                    <label>First Name</label>
                   </td>
                   <td>
-                    <label >Last Name</label>
+                    <label>Last Name</label>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                   
                     <input
                       type="text"
                       id="fName"
@@ -151,7 +143,7 @@ const EmployeeForm = ({ addEmployee }) => {
                     />
                   </td>
                   <td>
-                   <input
+                    <input
                       type="text"
                       id="LName"
                       value={lastname}
@@ -177,21 +169,26 @@ const EmployeeForm = ({ addEmployee }) => {
             <div className="photo_header">
               <h3> Profile Picture</h3>
             </div>
-            <div >
-                <img className="picture" src="/img/Employee_photo_1.jpg" alt="person_img"></img>
+            <div>
+              <img
+                className="picture"
+                src="/img/Employee_photo_1.jpg"
+                alt="person_img"
+              ></img>
             </div>
             <button className="image_button"> Select Image</button>
           </div>
         </div>
 
-
-                <div className="user_confirmation">
-                    <button type="submit" className="user_button" _>Add Employee</button>
-                    <Link to="/admin/employees">Cancel</Link>
-                </div>
-            </form>
+        <div className="user_confirmation">
+          <button type="submit" className="user_button" _>
+            Add Employee
+          </button>
+          <Link to="/admin/employees">Cancel</Link>
         </div>
-    );
+      </form>
+    </div>
+  );
 };
 
 export default EmployeeForm;

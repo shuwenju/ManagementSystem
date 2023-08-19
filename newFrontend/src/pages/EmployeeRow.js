@@ -10,6 +10,7 @@ import {
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Link, withRouter } from "react-router-dom";
 
 function EmployeeRow({ employee, index, onEmployeeUpdated }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -65,9 +66,13 @@ function EmployeeRow({ employee, index, onEmployeeUpdated }) {
       // Check the response status or other conditions to determine if the update was successful
       if (response.status === 200) {
         // Close modal after successful update
-        toggleModal();
+       // this.toggleModal();
         // Refresh employee list
-        onEmployeeUpdated(employee.userName);
+       // this.props.onEmployeeUpdated(employee);
+     
+       window.location.href = "http://localhost:3000/admin/employees";
+      
+      
       } else {
         // Handle error or show error message
         console.error("Update failed");
@@ -143,34 +148,29 @@ function EmployeeRow({ employee, index, onEmployeeUpdated }) {
         <CDBModalBody>
           {/* Edit form here */}
 
-          <table className="table table-bordered table-hover">
-            <thead className="thead-dark">
+          <table className="tabletable-hover">
               <tr>
-                <th scope="col">Username</th>
+                <th scope="col">Username :</th>
+                <td>
+                {editedEmployee.userName}
+               </td>
+              </tr>
+              <tr>
                 <th scope="col">FirstName</th>
                 <th scope="col">LastName</th>
                 <th scope="col">Email</th>
               </tr>
-            </thead>
-            <td>
-           
-              <input
-                type="text"
-                name="userName"
-                value={editedEmployee.userName}
-               
-              />
-            </td>
-            <td>
+              <tr>
+                <td>
             
-              <input
-                type="text"
-                name="firstName"
-                value={editedEmployee.firstName}
-                onChange={handleInputChange}
-              />
-            </td>
-            <td>
+                  <input
+                    type="text"
+                    name="firstName"
+                    value={editedEmployee.firstName}
+                    onChange={handleInputChange}
+                  />
+                </td>
+                <td>
              
               <input
                 type="text"
@@ -178,6 +178,7 @@ function EmployeeRow({ employee, index, onEmployeeUpdated }) {
                 value={editedEmployee.lastName}
                 onChange={handleInputChange}
               />
+           
             </td>
             <td>
               <input
@@ -187,6 +188,7 @@ function EmployeeRow({ employee, index, onEmployeeUpdated }) {
                 onChange={handleInputChange}
               />
             </td>
+            </tr>
           </table>
           {/* Other input fields */}
         </CDBModalBody>
