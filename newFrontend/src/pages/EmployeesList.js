@@ -2,21 +2,31 @@ import React from "react";
 import EmployeeRow from "./EmployeeRow";
 import { Link } from "react-router-dom";
 import "../css/EmployeesList.css";
-import { useState } from "react";
-function EmployeesList({ employees }) {
+import { useState, useEffect } from "react"; // Import useEffect here
+import axios from "axios";
 
- 
-  const roleOptions = ["Admin", "User"];
+function EmployeesList({ initialEmployees }) { // Change the parameter name to initialEmployees
 
-  const [selectedRoles, setSelectedRoles] = useState({});
+  const [employees, setEmployees] = useState([]); // Change the state variable name to employees
 
-  const handleRoleChange = (employeeIndex, role) => {
-    setSelectedRoles((prevSelectedRoles) => ({
-      ...prevSelectedRoles,
-      [employeeIndex]: role,
-    }));
+  useEffect(() => {
+    fetchEmployees();
+  }, []);
+
+  const fetchEmployees = async () => {
+    try {
+      const response = await axios.get("https://localhost:44343/api/Employee/users");
+      const filteredEmployees = response.data.filter(employee => employee.isLocked !== "1");
+      setEmployees(filteredEmployees);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
+  const handleEmployeeUpdated = (updatedEmployeeName) => {
+    // Update the employees state by filtering out the employee with the updated username
+    setEmployees((prevEmployees) => prevEmployees.filter((employee) => employee.userName !== updatedEmployeeName));
+  };
 
 
 
@@ -38,7 +48,7 @@ function EmployeesList({ employees }) {
               <th scope="col">LastName</th>
               <th scope="col">Email</th>
               <th scope="col">RoleType</th>
-              <th scope="col">IsLocked</th>
+              <th hidden scope="col">Deleted</th>
               
               <th scope="col">Edit</th>
               <th scope="col">Delete</th>
@@ -52,10 +62,8 @@ function EmployeesList({ employees }) {
                 key={`${row.email}_${index}`}
                 employee={row}
                 index={index}
-                // edit={edit}
-                // deleteEmployee={deleteEmployee}
-                selectedRole={selectedRoles[index]}
-                onRoleChange={handleRoleChange}
+         
+                onEmployeeUpdated={handleEmployeeUpdated}
               />
             ))}
           </tbody>
@@ -64,5 +72,6 @@ function EmployeesList({ employees }) {
     </div>
   );
 }
+
 
 export default EmployeesList;
