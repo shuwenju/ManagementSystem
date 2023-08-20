@@ -17,7 +17,7 @@ using System.Data;
 
 namespace ManagementSystem.Controllers
 {
-    [Authorize(Roles = "Admin, User")]
+    //[Authorize(Roles = "Admin, User")]
     [Route("api/[controller]")]
     [ApiController]
     public class OrdersController : ControllerBase

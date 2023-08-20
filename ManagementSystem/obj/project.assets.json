@@ -11919,19 +11919,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\danli\\.nuget\\packages\\": {}
+    "C:\\Users\\shuwe\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Git_Code_FromURL\\ManagementSystemNew\\ManagementSystem\\ManagementSystem\\ManagementSystem.csproj",
+      "projectUniqueName": "C:\\Users\\shuwe\\source\\Milestone2\\ManagementSystem\\ManagementSystem\\ManagementSystem.csproj",
       "projectName": "ManagementSystem",
-      "projectPath": "D:\\Git_Code_FromURL\\ManagementSystemNew\\ManagementSystem\\ManagementSystem\\ManagementSystem.csproj",
-      "packagesPath": "C:\\Users\\danli\\.nuget\\packages\\",
-      "outputPath": "D:\\Git_Code_FromURL\\ManagementSystemNew\\ManagementSystem\\ManagementSystem\\obj\\",
+      "projectPath": "C:\\Users\\shuwe\\source\\Milestone2\\ManagementSystem\\ManagementSystem\\ManagementSystem.csproj",
+      "packagesPath": "C:\\Users\\shuwe\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\shuwe\\source\\Milestone2\\ManagementSystem\\ManagementSystem\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\danli\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\shuwe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11939,14 +11944,15 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Git_Code_FromURL\\ManagementSystemNew\\ManagementSystem\\Management.Service\\Management.Service.csproj": {
-              "projectPath": "D:\\Git_Code_FromURL\\ManagementSystemNew\\ManagementSystem\\Management.Service\\Management.Service.csproj"
+            "C:\\Users\\shuwe\\source\\Milestone2\\ManagementSystem\\Management.Service\\Management.Service.csproj": {
+              "projectPath": "C:\\Users\\shuwe\\source\\Milestone2\\ManagementSystem\\Management.Service\\Management.Service.csproj"
             }
           }
         }
@@ -12015,7 +12021,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
