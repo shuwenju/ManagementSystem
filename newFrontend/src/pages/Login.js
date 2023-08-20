@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import axios from "axios";
 import RoleContext from "../data/RoleContext";
+import {Link} from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -88,6 +89,10 @@ function Login() {
               Sign in
             </button>
           </form>
+
+          <div style={{ marginTop: '30px' }}>
+            <Link to="/tracking">Track an order</Link>
+          </div>
         </div>
       </div>
     </div>

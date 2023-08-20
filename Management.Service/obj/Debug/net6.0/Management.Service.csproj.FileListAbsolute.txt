@@ -106,3 +106,15 @@ D:\Git_Code_FromURL\ManagementSystemNew\ManagementSystem\Management.Service\obj\
 D:\Git_Code_FromURL\ManagementSystemNew\ManagementSystem\Management.Service\obj\Debug\net6.0\refint\Management.Service.dll
 D:\Git_Code_FromURL\ManagementSystemNew\ManagementSystem\Management.Service\obj\Debug\net6.0\Management.Service.pdb
 D:\Git_Code_FromURL\ManagementSystemNew\ManagementSystem\Management.Service\obj\Debug\net6.0\ref\Management.Service.dll
+C:\Users\shuwe\source\Milestone2\ManagementSystem\Management.Service\bin\Debug\net6.0\Management.Service.deps.json
+C:\Users\shuwe\source\Milestone2\ManagementSystem\Management.Service\bin\Debug\net6.0\Management.Service.dll
+C:\Users\shuwe\source\Milestone2\ManagementSystem\Management.Service\bin\Debug\net6.0\Management.Service.pdb
+C:\Users\shuwe\source\Milestone2\ManagementSystem\Management.Service\obj\Debug\net6.0\Management.Service.csproj.AssemblyReference.cache
+C:\Users\shuwe\source\Milestone2\ManagementSystem\Management.Service\obj\Debug\net6.0\Management.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\shuwe\source\Milestone2\ManagementSystem\Management.Service\obj\Debug\net6.0\Management.Service.AssemblyInfoInputs.cache
+C:\Users\shuwe\source\Milestone2\ManagementSystem\Management.Service\obj\Debug\net6.0\Management.Service.AssemblyInfo.cs
+C:\Users\shuwe\source\Milestone2\ManagementSystem\Management.Service\obj\Debug\net6.0\Management.Service.csproj.CoreCompileInputs.cache
+C:\Users\shuwe\source\Milestone2\ManagementSystem\Management.Service\obj\Debug\net6.0\Management.Service.dll
+C:\Users\shuwe\source\Milestone2\ManagementSystem\Management.Service\obj\Debug\net6.0\refint\Management.Service.dll
+C:\Users\shuwe\source\Milestone2\ManagementSystem\Management.Service\obj\Debug\net6.0\Management.Service.pdb
+C:\Users\shuwe\source\Milestone2\ManagementSystem\Management.Service\obj\Debug\net6.0\ref\Management.Service.dll
