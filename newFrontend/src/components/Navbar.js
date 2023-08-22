@@ -29,7 +29,10 @@ const Navbar = ({ onToggleSideBar }) => {
         />
         <ul className="navbar-nav ms-auto align-items-center">
           <li className="nav-item">
-            <NavLink className="nav-link" to="/setting">
+            <NavLink
+              className="nav-link"
+              to={role === "Admin" ? "/admin/setting" : "/user/setting"}
+            >
               <img
                 alt="panelImage"
                 src="/img/profile.png"
