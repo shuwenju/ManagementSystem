@@ -26,10 +26,9 @@
     flex: 1;
     /* Adjust the flex value to change the height */
     background-color: #ffffff;
-    justify-content: center;
-    /* Center items vertically */
-    align-items: center;
-    /* Center items horizontally */
+    justify-content: center; /* Center items horizontally */
+    align-items: center;/* Center items vertically */
+    
 }
 
 .goat-head {
@@ -89,4 +88,9 @@
 .error-message {
     color: red;
     margin-top: 10px;
+}
+
+.tracking {
+    display: flex;
+    justify-content: center;
 }
