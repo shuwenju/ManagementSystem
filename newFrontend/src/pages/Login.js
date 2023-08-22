@@ -1,22 +1,23 @@
+import React, { useState, useContext } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import axios from "axios";
+import RoleContext from "../data/RoleContext";
 import "../css/Login.css";
 import animationGif from "../media/login-animation.gif";
 import goatHead from "../media/goat-head.png";
-import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
-import axios from "axios";
-import RoleContext from "../data/RoleContext";
-import {Link} from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState(""); // Added state for error message
+  const [errorMessage, setErrorMessage] = useState("");
+  const [userFullName, setUserFullName] = useState(""); // Added state for user's full name
   const navigate = useNavigate();
   const { setRole } = useContext(RoleContext);
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setErrorMessage(""); // Clear any previous error messages
+    setErrorMessage("");
+    setUserFullName(""); // Clear previous user full name
 
     try {
       const response = await axios.post(
@@ -36,6 +37,29 @@ function Login() {
       if (role === "Admin") {
         navigate("/admin");
       } else {
+        // Get user information using /api/Authentication/users
+        const usersResponse = await axios.get(
+          "https://localhost:44343/api/Authentication/users",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        const users = usersResponse.data;
+        const loggedInUser = users.find((user) => user.userName === username);
+
+        if (loggedInUser) {
+          const fullName = `${loggedInUser.firstName} ${loggedInUser.lastName}`;
+          setUserFullName(fullName);
+
+          // Store userFullName in localStorage
+          localStorage.setItem("userFullName", fullName);
+        } else {
+          setErrorMessage("User not found in the employee list.");
+        }
+
         navigate("/user");
       }
     } catch (error) {
@@ -70,6 +94,9 @@ function Login() {
         <div className="bottom-right">
           <p className="login-text">Sign in with your account</p>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
+          {userFullName && (
+            <p className="welcome-message">Welcome, {userFullName}!</p>
+          )}
           <form onSubmit={handleLogin} className="login-form">
             <input
               className="login-input"
@@ -90,11 +117,11 @@ function Login() {
             </button>
           </form>
 
-          <div style={{ marginTop: '10px' }}>
+          <div style={{ marginTop: "10px" }}>
             <Link to="/forgotPassword">Forgot password?</Link>
           </div>
 
-          <div style={{ marginTop: '30px' }}>
+          <div style={{ marginTop: "30px" }}>
             <Link to="/tracking">Track an order</Link>
           </div>
         </div>

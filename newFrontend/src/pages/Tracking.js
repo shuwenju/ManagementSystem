@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { CDBInput, CDBCard, CDBCardBody, CDBIcon, CDBBtn, CDBLink, CDBContainer } from 'cdbreact';
 import axios from 'axios';
+import { Link } from "react-router-dom";
+import "../css/Login.css";
 
 const Tracking = () => {
     const [tracking, setTracking] = useState('')
@@ -21,40 +23,80 @@ const Tracking = () => {
     }
   return (
     <div>
-        <div className='inputbox'>
-        <CDBContainer style={{ display: 'flex', marginTop:'15', justifyContent: 'center', margin: '40px auto' }}>
-        <CDBCard style={{ width: '30rem' }}>
+      <div className="inputbox">
+        <CDBContainer
+          style={{
+            display: "flex",
+            marginTop: "15",
+            justifyContent: "center",
+            margin: "40px auto",
+          }}
+        >
+          <CDBCard style={{ width: "30rem" }}>
             <CDBCardBody className="mx-4">
-            <div className="text-center mt-4 mb-2">
+              <div className="text-center mt-4 mb-2">
                 <p className="h4"> Track an order </p>
-            </div>
-            <CDBInput material hint="number" type="text" value={tracking} onChange={(e) => setTracking(e.target.value)}/>
-            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
-                <CDBBtn color="primary" circle className="btn-block my-3 mx-0" onClick={handleClick}>
-                Track
+              </div>
+              <CDBInput
+                material
+                hint="number"
+                type="text"
+                value={tracking}
+                onChange={(e) => setTracking(e.target.value)}
+              />
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  marginTop: "10px",
+                }}
+              >
+                <CDBBtn
+                  color="primary"
+                  circle
+                  className="btn-block my-3 mx-0"
+                  onClick={handleClick}
+                >
+                  Track
                 </CDBBtn>
-            </div>
+              </div>
             </CDBCardBody>
-        </CDBCard>
+          </CDBCard>
         </CDBContainer>
+      </div>
+      {err ? (
+        <div
+          className="order-info"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            marginTop: "15px",
+            margin: "40px auto",
+          }}
+        >
+          <p style={{ color: "red" }}>Error: Order doesn't exist</p>
         </div>
-        {err ?
-         (
-            <div className='order-info' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '15px', margin: '40px auto' }}>
-                <p style={{color : 'red'}}>Error: Order doesn't exist</p>
-            </div>    
-            ) :
-         (
-            <div className='order-info' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '15px', margin: '40px auto' }}>
-            <p>Order number: {order.id}</p>
-            <p>Order status: {order.orderStatus}</p>
-            <p>Address: {address}</p> 
-          </div>
-         )
-        }
+      ) : (
+        <div
+          className="order-info"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            marginTop: "15px",
+            margin: "40px auto",
+          }}
+        >
+          <p>Order number: {order.id}</p>
+          <p>Order status: {order.orderStatus}</p>
+          <p>Address: {address}</p>
+        </div>
+      )}
 
-    
-
+      <div className='tracking' >
+        <Link to="/login">Log in</Link>
+      </div>
     </div>
   );
 };

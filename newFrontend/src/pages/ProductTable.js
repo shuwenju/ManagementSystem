@@ -9,6 +9,8 @@ import {
 import ReactPaginate from "react-paginate";
 import "../css/ProductTable.css";
 import { GrFormPrevious, GrFormNext } from "react-icons/gr";
+import axios from "axios";
+import ProductEditFormModal from "./ProductEditFormModal";
 
 const ProductTable = ({ isAdmin, items, getItems }) => {
   const [itemOffset, setItemOffset] = useState(0);
@@ -21,6 +23,27 @@ const ProductTable = ({ isAdmin, items, getItems }) => {
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % items.length;
     setItemOffset(newOffset);
+  };
+
+  const [editModalVisible, setEditModalVisible] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const handleEdit = (product) => {
+    setSelectedProduct(product);
+    setEditModalVisible(true);
+  };
+  const handleDelete = async (productId) => {
+    try {
+      const token = localStorage.getItem("jwtToken");
+      await axios.delete(`https://localhost:44343/api/Items/${productId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      getItems();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   function Table({ currentItems }) {
@@ -41,6 +64,7 @@ const ProductTable = ({ isAdmin, items, getItems }) => {
                       fas
                       icon="edit"
                       style={{ color: "orange", cursor: "pointer" }}
+                      onClick={() => handleEdit(item)}
                     />
                   </td>
                   <td>
@@ -48,8 +72,17 @@ const ProductTable = ({ isAdmin, items, getItems }) => {
                       fas
                       icon="trash"
                       style={{ color: "red", cursor: "pointer" }}
+                      onClick={() => handleDelete(item.id)}
                     />
                   </td>
+                  {editModalVisible && (
+                    <ProductEditFormModal
+                      show={editModalVisible}
+                      onHide={() => setEditModalVisible(false)}
+                      getItems={getItems}
+                      productData={selectedProduct}
+                    />
+                  )}
                 </>
               )}
             </tr>
