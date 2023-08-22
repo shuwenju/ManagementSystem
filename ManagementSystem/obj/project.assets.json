@@ -11919,19 +11919,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ramez\\.nuget\\packages\\": {}
+    "C:\\Users\\danli\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ramez\\OneDrive\\Desktop\\John Abbott\\16 PROJECT INTEGRATION\\ManagementSystem\\ManagementSystem\\ManagementSystem.csproj",
+      "projectUniqueName": "D:\\Git_Code_FromURL\\ManagementSystemNew\\ManagementSystem\\ManagementSystem\\ManagementSystem.csproj",
       "projectName": "ManagementSystem",
-      "projectPath": "C:\\Users\\ramez\\OneDrive\\Desktop\\John Abbott\\16 PROJECT INTEGRATION\\ManagementSystem\\ManagementSystem\\ManagementSystem.csproj",
-      "packagesPath": "C:\\Users\\ramez\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ramez\\OneDrive\\Desktop\\John Abbott\\16 PROJECT INTEGRATION\\ManagementSystem\\ManagementSystem\\obj\\",
+      "projectPath": "D:\\Git_Code_FromURL\\ManagementSystemNew\\ManagementSystem\\ManagementSystem\\ManagementSystem.csproj",
+      "packagesPath": "C:\\Users\\danli\\.nuget\\packages\\",
+      "outputPath": "D:\\Git_Code_FromURL\\ManagementSystemNew\\ManagementSystem\\ManagementSystem\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ramez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\danli\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11939,15 +11939,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\ramez\\OneDrive\\Desktop\\John Abbott\\16 PROJECT INTEGRATION\\ManagementSystem\\Management.Service\\Management.Service.csproj": {
-              "projectPath": "C:\\Users\\ramez\\OneDrive\\Desktop\\John Abbott\\16 PROJECT INTEGRATION\\ManagementSystem\\Management.Service\\Management.Service.csproj"
+            "D:\\Git_Code_FromURL\\ManagementSystemNew\\ManagementSystem\\Management.Service\\Management.Service.csproj": {
+              "projectPath": "D:\\Git_Code_FromURL\\ManagementSystemNew\\ManagementSystem\\Management.Service\\Management.Service.csproj"
             }
           }
         }
@@ -12016,7 +12015,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }
