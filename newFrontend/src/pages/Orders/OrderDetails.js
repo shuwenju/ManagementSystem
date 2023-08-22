@@ -2,6 +2,7 @@ import {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
 import moment from "moment/moment";
+import SendOrderEmail from "./sendOrderEmail";
 
 export const OrderDetails = () => {
     const [order, setOrder] = useState({
@@ -138,6 +139,7 @@ export const OrderDetails = () => {
                     </div>
                 </div>
             </div>
+            <SendOrderEmail {...order}/>
         </div>
     );
 };

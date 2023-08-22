@@ -9,9 +9,17 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = ManagementSystem
 build_property.RootNamespace = ManagementSystem
-build_property.ProjectDir = C:\Users\shuwe\source\Milestone2\ManagementSystem\ManagementSystem\
+build_property.ProjectDir = C:\Users\ramez\OneDrive\Desktop\John Abbott\16 PROJECT INTEGRATION\ManagementSystem\ManagementSystem\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\shuwe\source\Milestone2\ManagementSystem\ManagementSystem
+build_property.MSBuildProjectDirectory = C:\Users\ramez\OneDrive\Desktop\John Abbott\16 PROJECT INTEGRATION\ManagementSystem\ManagementSystem
 build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/ramez/OneDrive/Desktop/John Abbott/16 PROJECT INTEGRATION/ManagementSystem/ManagementSystem/Views/CancellationEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FuY2VsbGF0aW9uRW1haWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ramez/OneDrive/Desktop/John Abbott/16 PROJECT INTEGRATION/ManagementSystem/ManagementSystem/Views/OrderDetailsEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJEZXRhaWxzRW1haWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
