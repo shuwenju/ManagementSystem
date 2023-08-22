@@ -46,6 +46,11 @@ const ProductTable = ({ isAdmin, items, getItems }) => {
     }
   };
 
+  const handleItemsPerPageChange = (e) => {
+    setItemsPerPage(Number(e.target.value));
+    setItemOffset(0); // Reset the current page offset when changing items per page
+  };
+
   function Table({ currentItems }) {
     return (
       <>
@@ -127,6 +132,21 @@ const ProductTable = ({ isAdmin, items, getItems }) => {
           previousLabel={<GrFormPrevious />}
           renderOnZeroPageCount={null}
         />
+      </div>
+      <div>
+        <label htmlFor="itemsPerPageSelect" className="me-2">
+          Items per page:
+        </label>
+        <select
+          id="itemsPerPageSelect"
+          value={itemsPerPage}
+          onChange={handleItemsPerPageChange}
+        >
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+        </select>
       </div>
     </div>
   );
