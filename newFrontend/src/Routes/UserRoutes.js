@@ -4,7 +4,7 @@ import {Customers} from "../pages/Customers";
 import {Products} from "../pages/Products";
 import {Orders} from "../pages/Orders/Orders";
 import {Reports} from "../pages/Reports";
-import {Setting} from "../pages/Setting";
+import {Setting} from "../pages/Settings/Setting";
 import UserLayout from "../Layouts/UserLayout";
 import {OrderCreate} from "../pages/Orders/OrderCreate";
 import {OrderDetails} from "../pages/Orders/OrderDetails";
