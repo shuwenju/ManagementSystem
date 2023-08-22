@@ -1,0 +1,22 @@
+﻿@model ManagementSystem.Models.DbModels.Order
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Cancellation</title>
+    <style>
+        h2 {
+            margin-bottom: 25px;
+        }
+
+        strong {
+            margin-right: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Your order has been cancelled</h2>
+    <p><strong>Order Number:</strong><span>@Model.Id</span></p>
+    <p><strong>Ordered On:</strong><span>@Model.CreatedAt.ToString("yyyy/MM/dd")</span></p>
+</body>
+</html>
