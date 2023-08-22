@@ -57,7 +57,7 @@ builder.Services.AddSingleton(emailConfig);
 builder.Services.AddScoped<IEmailService, EmailService>();
 
 // Add services to the container.
-
+builder.Services.AddScoped<ManagementSystem.Services.ReportService>();
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {

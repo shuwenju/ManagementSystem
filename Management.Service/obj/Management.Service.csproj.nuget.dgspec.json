@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\shuwe\\source\\IntegrationProject\\ManagementSystem\\Management.Service\\Management.Service.csproj": {}
+    "C:\\Users\\bgord\\Documents\\ReactJAC\\ManagementSystem\\ManagementSystem\\Management.Service\\Management.Service.csproj": {}
   },
   "projects": {
-    "C:\\Users\\shuwe\\source\\IntegrationProject\\ManagementSystem\\Management.Service\\Management.Service.csproj": {
+    "C:\\Users\\bgord\\Documents\\ReactJAC\\ManagementSystem\\ManagementSystem\\Management.Service\\Management.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\shuwe\\source\\IntegrationProject\\ManagementSystem\\Management.Service\\Management.Service.csproj",
+        "projectUniqueName": "C:\\Users\\bgord\\Documents\\ReactJAC\\ManagementSystem\\ManagementSystem\\Management.Service\\Management.Service.csproj",
         "projectName": "Management.Service",
-        "projectPath": "C:\\Users\\shuwe\\source\\IntegrationProject\\ManagementSystem\\Management.Service\\Management.Service.csproj",
-        "packagesPath": "C:\\Users\\shuwe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\shuwe\\source\\IntegrationProject\\ManagementSystem\\Management.Service\\obj\\",
+        "projectPath": "C:\\Users\\bgord\\Documents\\ReactJAC\\ManagementSystem\\ManagementSystem\\Management.Service\\Management.Service.csproj",
+        "packagesPath": "C:\\Users\\bgord\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\bgord\\Documents\\ReactJAC\\ManagementSystem\\ManagementSystem\\Management.Service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\shuwe\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\bgord\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -60,12 +60,26 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.19, 6.0.19]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.19, 6.0.19]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.19, 6.0.19]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.305\\RuntimeIdentifierGraph.json"
         }
       }
     }

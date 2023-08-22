@@ -41,7 +41,6 @@ export const Products = () => {
       setItems(response.data);
     } catch (error) {
       console.error(error);
-      // Optionally: Notify the user about the error
     } finally {
       setIsLoading(false);
     }
@@ -74,7 +73,7 @@ export const Products = () => {
         <ProductTable
           isAdmin={isAdmin}
           items={filteredItems}
-          getItem={getItems}
+          getItems={getItems}
         />
         {isLoading ? <Spinner /> : null}
       </div>
