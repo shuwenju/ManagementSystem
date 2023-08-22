@@ -398,19 +398,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\danli\\.nuget\\packages\\": {}
+    "C:\\Users\\ramez\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Git_Code_FromURL\\ManagementSystemNew\\ManagementSystem\\Management.Service\\Management.Service.csproj",
+      "projectUniqueName": "C:\\Users\\ramez\\OneDrive\\Desktop\\John Abbott\\16 PROJECT INTEGRATION\\ManagementSystem\\Management.Service\\Management.Service.csproj",
       "projectName": "Management.Service",
-      "projectPath": "D:\\Git_Code_FromURL\\ManagementSystemNew\\ManagementSystem\\Management.Service\\Management.Service.csproj",
-      "packagesPath": "C:\\Users\\danli\\.nuget\\packages\\",
-      "outputPath": "D:\\Git_Code_FromURL\\ManagementSystemNew\\ManagementSystem\\Management.Service\\obj\\",
+      "projectPath": "C:\\Users\\ramez\\OneDrive\\Desktop\\John Abbott\\16 PROJECT INTEGRATION\\ManagementSystem\\Management.Service\\Management.Service.csproj",
+      "packagesPath": "C:\\Users\\ramez\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ramez\\OneDrive\\Desktop\\John Abbott\\16 PROJECT INTEGRATION\\ManagementSystem\\Management.Service\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\danli\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ramez\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -457,7 +457,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1617,3 +1617,5 @@ D:\Git_Code_FromURL\ManagementSystemNew\ManagementSystem\ManagementSystem\obj\De
 D:\Git_Code_FromURL\ManagementSystemNew\ManagementSystem\ManagementSystem\obj\Debug\net6.0\ManagementSystem.pdb
 D:\Git_Code_FromURL\ManagementSystemNew\ManagementSystem\ManagementSystem\obj\Debug\net6.0\ManagementSystem.genruntimeconfig.cache
 D:\Git_Code_FromURL\ManagementSystemNew\ManagementSystem\ManagementSystem\obj\Debug\net6.0\ref\ManagementSystem.dll
+C:\Users\ramez\OneDrive\Desktop\John Abbott\16 PROJECT INTEGRATION\ManagementSystem\ManagementSystem\obj\Debug\net6.0\ManagementSystem.RazorAssemblyInfo.cache
+C:\Users\ramez\OneDrive\Desktop\John Abbott\16 PROJECT INTEGRATION\ManagementSystem\ManagementSystem\obj\Debug\net6.0\ManagementSystem.RazorAssemblyInfo.cs

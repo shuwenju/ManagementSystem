@@ -2,6 +2,7 @@
 using MimeKit;
 using MailKit.Net.Smtp;
 using System.Net.Mail;
+using MimeKit.Text;
 
 namespace Management.Service.Services
 {
@@ -12,17 +13,23 @@ namespace Management.Service.Services
 
 		public void SendEmail(Message message)
 		{
-			var emailMessage = CreateEmailMessage(message);
+			var emailMessage = CreateEmailMessage(message, TextFormat.Text);
 			Send(emailMessage);
 		}
 
-		private MimeMessage CreateEmailMessage(Message message)
+        public void SendHtmlEmail(Message message)
+        {
+            var emailMessage = CreateEmailMessage(message, TextFormat.Html);
+            Send(emailMessage);
+        }
+
+        private MimeMessage CreateEmailMessage(Message message, TextFormat format)
 		{
 			var emailMessage = new MimeMessage();
-			emailMessage.From.Add(new MailboxAddress("email", _emailConfig.From));
+			emailMessage.From.Add(new MailboxAddress("RAM Inventory Management", _emailConfig.From));
 			emailMessage.To.AddRange(message.To);
 			emailMessage.Subject = message.Subject;
-			emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Text) { Text = message.Content };
+			emailMessage.Body = new TextPart(format) { Text = message.Content };
 			return emailMessage;
 		}
 

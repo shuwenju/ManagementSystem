@@ -151,14 +151,14 @@ export const OrderCreate = () => {
             // Retrieve the JWT token from local storage
             const token = localStorage.getItem('jwtToken');
 
-            const response = await axios.post('https://localhost:44343/api/Orders', formData,
+            await axios.post('https://localhost:44343/api/Orders', formData,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
                 }
             )
-            redirect(`${routePath}/orders`, { state: { message: "Order Created Successfully" } })
+            redirect(`${routePath}/orders`, {state: {message: "Order Created Successfully"}})
         } catch (error) {
             console.log(error)
         }
