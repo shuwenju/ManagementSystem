@@ -2,7 +2,7 @@ import {useCallback, useEffect, useState} from "react";
 import axios from "axios";
 import {useParams} from "react-router-dom";
 import moment from "moment/moment";
-import SendOrderEmail from "./sendOrderEmail";
+import SendOrderEmail from "./SendOrderEmail";
 
 export const OrderDetails = () => {
     const [order, setOrder] = useState({
@@ -94,7 +94,7 @@ export const OrderDetails = () => {
                 </div>
                 <div className="col-12 col-md-6 col-lg-4">
                     <input type="text" className="form-control w-auto" disabled
-                           defaultValue={`${order.applicationUser?.firstName} ${order.applicationUser?.lastName}`}/>
+                           value={`${order.applicationUser.firstName} ${order.applicationUser.lastName}`}/>
                 </div>
                 <div className="col-12 col-md-6 col-lg-2">
                     <p className="fw-semibold ps-2 p-md-0">Order Status:</p>
