@@ -28,7 +28,7 @@ const Tracking = () => {
             <div className="text-center mt-4 mb-2">
                 <p className="h4"> Track an order </p>
             </div>
-            <CDBInput material hint="Email" type="email" value={tracking} onChange={(e) => setTracking(e.target.value)}/>
+            <CDBInput material hint="number" type="text" value={tracking} onChange={(e) => setTracking(e.target.value)}/>
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: '10px' }}>
                 <CDBBtn color="primary" circle className="btn-block my-3 mx-0" onClick={handleClick}>
                 Track

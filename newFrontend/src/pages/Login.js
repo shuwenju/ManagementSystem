@@ -90,6 +90,10 @@ function Login() {
             </button>
           </form>
 
+          <div style={{ marginTop: '10px' }}>
+            <Link to="/forgotPassword">Forgot password?</Link>
+          </div>
+
           <div style={{ marginTop: '30px' }}>
             <Link to="/tracking">Track an order</Link>
           </div>

@@ -132,7 +132,7 @@ namespace ManagementSystem.Controllers
 			return StatusCode(StatusCodes.Status500InternalServerError,
 				new Response { Status = "Error", Message = "User doesn't exist" });
 		}
-
+		
 		[HttpPost]
 		[Route("login")]
 		public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
@@ -232,6 +232,7 @@ namespace ManagementSystem.Controllers
 		//		new Response { Status = "Not Found", Message = "Invalid Code" });
 		//}
 
+	
 		[HttpPost]
 		[Route("forgot-password")]
 		[AllowAnonymous]
@@ -243,10 +244,12 @@ namespace ManagementSystem.Controllers
 				// if user found, you create and give them a token
 				var token = await _userManager.GeneratePasswordResetTokenAsync(user);
 				var forgotPasswordLink = Url.Action(nameof(ResetPassword), "Authentication", new {token, email=user.Email}, Request.Scheme);
-				var message = new Message(new string[] { user.Email! }, "Forgot password link", forgotPasswordLink!);
+				//var message = new Message(new string[] { user.Email! }, "Forgot password link", forgotPasswordLink!);
+				var message = new Message(new string[] { user.Email! }, "Temporary password", $"Your temporary password is: {token}");
 				_emailService.SendEmail(message);
 				return StatusCode(StatusCodes.Status200OK,
-					new Response { Status = "Success", Message = $"Reset password request sent to email {user.Email}, please verify through email link" });
+					//new Response { Status = "Success", Message = $"Reset password request sent to email {user.Email}, please verify through email link" });
+					new Response { Status = "Success", Message = $"Reset password request sent to email {user.Email}" });
 			}
 			else
 			{
@@ -267,6 +270,7 @@ namespace ManagementSystem.Controllers
 			});
 		}
 
+		
 		[HttpPost]
 		[Route("reset-password")]
 		[AllowAnonymous]
