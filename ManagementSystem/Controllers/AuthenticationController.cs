@@ -51,7 +51,9 @@ namespace ManagementSystem.Controllers
 				user.UserName,
 				user.FirstName,
 				user.LastName,
-				user.Email
+				user.Email,
+				user.RoleType,
+				user.IsLocked,
 			});
 			return Ok(userData);
 		}
@@ -72,11 +74,13 @@ namespace ManagementSystem.Controllers
 			// if user not exist, add to database
 			ApplicationUser user = new ApplicationUser
 			{
-                FirstName = registerUser.FirstName,
-                LastName = registerUser.LastName,
-                Email = registerUser.Email,
+				FirstName = registerUser.FirstName,
+				LastName = registerUser.LastName,
+				Email = registerUser.Email,
 				SecurityStamp = Guid.NewGuid().ToString(),
 				UserName = registerUser.Username,
+				RoleType = registerUser.RoleType
+
 				//TwoFactorEnabled = true
 			};
 
@@ -128,7 +132,7 @@ namespace ManagementSystem.Controllers
 			return StatusCode(StatusCodes.Status500InternalServerError,
 				new Response { Status = "Error", Message = "User doesn't exist" });
 		}
-
+		
 		[HttpPost]
 		[Route("login")]
 		public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
@@ -153,8 +157,13 @@ namespace ManagementSystem.Controllers
 
 			if (user != null && await _userManager.CheckPasswordAsync(user,loginModel.Password) && user.EmailConfirmed)
 			{
-				//claimlist creation
-				var authClaims = new List<Claim>
+                if (user.IsLocked == "1")
+                {
+                    return Unauthorized(new { title = "Unauthorized: Account is locked", status = 401 });
+                }
+
+                //claimlist creation
+                var authClaims = new List<Claim>
 				{
 					new Claim(ClaimTypes.Name, user.UserName),
 					new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
@@ -223,6 +232,7 @@ namespace ManagementSystem.Controllers
 		//		new Response { Status = "Not Found", Message = "Invalid Code" });
 		//}
 
+	
 		[HttpPost]
 		[Route("forgot-password")]
 		[AllowAnonymous]
@@ -234,10 +244,12 @@ namespace ManagementSystem.Controllers
 				// if user found, you create and give them a token
 				var token = await _userManager.GeneratePasswordResetTokenAsync(user);
 				var forgotPasswordLink = Url.Action(nameof(ResetPassword), "Authentication", new {token, email=user.Email}, Request.Scheme);
-				var message = new Message(new string[] { user.Email! }, "Forgot password link", forgotPasswordLink!);
+				//var message = new Message(new string[] { user.Email! }, "Forgot password link", forgotPasswordLink!);
+				var message = new Message(new string[] { user.Email! }, "Temporary password", $"Your temporary password is: {token}");
 				_emailService.SendEmail(message);
 				return StatusCode(StatusCodes.Status200OK,
-					new Response { Status = "Success", Message = $"Reset password request sent to email {user.Email}, please verify through email link" });
+					//new Response { Status = "Success", Message = $"Reset password request sent to email {user.Email}, please verify through email link" });
+					new Response { Status = "Success", Message = $"Reset password request sent to email {user.Email}" });
 			}
 			else
 			{
@@ -258,6 +270,7 @@ namespace ManagementSystem.Controllers
 			});
 		}
 
+		
 		[HttpPost]
 		[Route("reset-password")]
 		[AllowAnonymous]

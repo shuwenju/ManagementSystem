@@ -5,16 +5,19 @@ import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import axios from "axios";
 import RoleContext from "../data/RoleContext";
+import {Link} from "react-router-dom";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); // Create a navigate function
+  const [errorMessage, setErrorMessage] = useState(""); // Added state for error message
+  const navigate = useNavigate();
   const { setRole } = useContext(RoleContext);
 
   const handleLogin = async (e) => {
-    // Perform login API call and get the JWT token
     e.preventDefault();
+    setErrorMessage(""); // Clear any previous error messages
+
     try {
       const response = await axios.post(
         "https://localhost:44343/api/authentication/login",
@@ -24,10 +27,8 @@ function Login() {
         }
       );
 
-      const { token } = response.data;
-      const { role } = response.data;
+      const { token, role } = response.data;
 
-      // Store the token in localStorage
       localStorage.setItem("jwtToken", token);
       localStorage.setItem("role", role);
       setRole(role);
@@ -37,38 +38,38 @@ function Login() {
       } else {
         navigate("/user");
       }
-
-      // try {
-      //   // Attempt to access the admin endpoint
-      //   await axios.get("https://localhost:44343/api/Admin/employees", {
-      //     headers: {
-      //       Authorization: `Bearer ${token}`,
-      //     },
-      //   });
-
-      //   // If the call succeeds, navigate to admin dashboard
-      //   navigate("/admin");
-      // } catch (error) {
-      //   // If the call fails, navigate to user page
-      //   navigate("/user");
-      // }
     } catch (error) {
-      // Handle errors, e.g., show error message to the user.
-    } //setJwtToken(token);
+      if (error.response && error.response.data) {
+        const { title, status } = error.response.data;
+
+        if (status === 401) {
+          if (title === "Unauthorized: Account is locked") {
+            setErrorMessage("Your account is locked. Please contact support.");
+          } else {
+            setErrorMessage("Invalid username or password.");
+          }
+        } else {
+          setErrorMessage("An error occurred during login.");
+        }
+      } else {
+        setErrorMessage("An error occurred during login.");
+      }
+    }
   };
 
   return (
     <div className="page-container">
       <div className="left-section">
-        <img className="gif" src={animationGif} />
+        <img className="gif" src={animationGif} alt="Animation" />
       </div>
       <div className="right-section">
         <div className="top-right">
-          <img className="goat-head" src={goatHead} />
+          <img className="goat-head" src={goatHead} alt="Goat Head" />
           <p className="login-title">RAM Inventory Manager</p>
         </div>
         <div className="bottom-right">
           <p className="login-text">Sign in with your account</p>
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
           <form onSubmit={handleLogin} className="login-form">
             <input
               className="login-input"
@@ -88,6 +89,14 @@ function Login() {
               Sign in
             </button>
           </form>
+
+          <div style={{ marginTop: '10px' }}>
+            <Link to="/forgotPassword">Forgot password?</Link>
+          </div>
+
+          <div style={{ marginTop: '30px' }}>
+            <Link to="/tracking">Track an order</Link>
+          </div>
         </div>
       </div>
     </div>

@@ -398,24 +398,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bgord\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\ramez\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\bgord\\Documents\\ReactJAC\\ManagementSystem\\ManagementSystem\\Management.Service\\Management.Service.csproj",
+      "projectUniqueName": "C:\\Users\\ramez\\OneDrive\\Desktop\\John Abbott\\16 PROJECT INTEGRATION\\ManagementSystem\\Management.Service\\Management.Service.csproj",
       "projectName": "Management.Service",
-      "projectPath": "C:\\Users\\bgord\\Documents\\ReactJAC\\ManagementSystem\\ManagementSystem\\Management.Service\\Management.Service.csproj",
-      "packagesPath": "C:\\Users\\bgord\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\bgord\\Documents\\ReactJAC\\ManagementSystem\\ManagementSystem\\Management.Service\\obj\\",
+      "projectPath": "C:\\Users\\ramez\\OneDrive\\Desktop\\John Abbott\\16 PROJECT INTEGRATION\\ManagementSystem\\Management.Service\\Management.Service.csproj",
+      "packagesPath": "C:\\Users\\ramez\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ramez\\OneDrive\\Desktop\\John Abbott\\16 PROJECT INTEGRATION\\ManagementSystem\\Management.Service\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\bgord\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\ramez\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -457,26 +452,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[6.0.19, 6.0.19]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[6.0.19, 6.0.19]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[6.0.19, 6.0.19]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.305\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -72,6 +72,9 @@ namespace ManagementSystem.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("RoleType")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -97,9 +100,9 @@ namespace ManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "a77b674c-2bb5-4805-98a5-5c001c942541",
+                            Id = "43aa12d5-f1f6-46d8-bce5-78cf53377676",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5b5eaf00-7df2-4c23-8663-7aa6ddb01839",
+                            ConcurrencyStamp = "6ee8f0c9-bb7d-46c9-9676-92a6f50c1732",
                             Email = "admin@test.com",
                             EmailConfirmed = true,
                             FirstName = "",
@@ -107,9 +110,9 @@ namespace ManagementSystem.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@TEST.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEN6sOxvREgFNiU0g0/S4qtUJ36LKiLGYfXT+3qdgVC71NWHIbS42Wl0n5ChGp+Z+kQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEACgRijf0XDi9iAYvWInaktw+9mzirchhXJbkVsRj1iJeRSYzR9Ay3FCz/JTfwPExA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "35ea24d3-73da-4952-a557-d8a7bf17eb96",
+                            SecurityStamp = "62100ba0-ad8d-4c9b-9cf0-663dcb3fea38",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });
@@ -264,14 +267,14 @@ namespace ManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "aa9f737f-f648-4c1f-8225-00246e9b060b",
+                            Id = "275d260d-e4e4-47ca-97b6-5e928984c6e9",
                             ConcurrencyStamp = "1",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
-                            Id = "984c5660-4132-4d5d-8e41-f15d8d33dadb",
+                            Id = "f2783e39-6858-41fe-8d0e-81cbb26f61bc",
                             ConcurrencyStamp = "2",
                             Name = "User",
                             NormalizedName = "User"
@@ -367,8 +370,8 @@ namespace ManagementSystem.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "a77b674c-2bb5-4805-98a5-5c001c942541",
-                            RoleId = "aa9f737f-f648-4c1f-8225-00246e9b060b"
+                            UserId = "43aa12d5-f1f6-46d8-bce5-78cf53377676",
+                            RoleId = "275d260d-e4e4-47ca-97b6-5e928984c6e9"
                         });
                 });
 

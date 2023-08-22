@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Management.Service.Services
 {
-	public interface IEmailService
-	{
-		void SendEmail(Message message);
-
-	}
+    public interface IEmailService
+    {
+        void SendEmail(Message message);
+        void SendHtmlEmail(Message message);
+    }
 }

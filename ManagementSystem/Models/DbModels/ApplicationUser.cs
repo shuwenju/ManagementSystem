@@ -9,6 +9,9 @@ namespace ManagementSystem.Models.DbModels
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = String.Empty;
 
-        public ICollection<Order> Orders { get; set; }
+        public string? RoleType { get; set; }
+		public string? IsLocked { get; set; }
+
+		public ICollection<Order> Orders { get; set; }
     }
 }

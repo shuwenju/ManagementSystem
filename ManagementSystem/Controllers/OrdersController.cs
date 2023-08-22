@@ -14,21 +14,28 @@ using Humanizer;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using System.Data;
+using Management.Service.Services;
+using Management.Service.Models;
+using ManagementSystem.Utilities;
 
 namespace ManagementSystem.Controllers
 {
-    [Authorize(Roles = "Admin, User")]
+    //[Authorize(Roles = "Admin, User")]
     [Route("api/[controller]")]
     [ApiController]
     public class OrdersController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
+        private readonly IEmailService _emailService;
+        private readonly IViewRenderService _viewRenderService;
 
-        public OrdersController(ApplicationDbContext context, IMapper mapper)
+        public OrdersController(ApplicationDbContext context, IMapper mapper, IEmailService emailService, IViewRenderService viewRenderService)
         {
             _context = context;
             _mapper = mapper;
+            _emailService = emailService;
+            _viewRenderService = viewRenderService;
         }
 
         // GET: api/Orders
@@ -58,13 +65,7 @@ namespace ManagementSystem.Controllers
                 return NotFound();
             }
             // load order with all relationship
-            var order = await _context.Orders
-                .Include(o => o.Customer)
-                .Include(o => o.ApplicationUser)
-                .Include(o => o.OrderItems)
-                .ThenInclude(o => o.Item)
-                .AsNoTracking()
-                .FirstOrDefaultAsync(o => o.Id == id);
+            var order = await LoadOrderDetails(id);
 
             if (order == null)
             {
@@ -122,7 +123,7 @@ namespace ManagementSystem.Controllers
 
         // PUT: api/Orders/id
         [HttpPut("{id}")]
-        public async Task<IActionResult> EditOrderStatus([FromRoute] int id, [FromBody] OrderStatusDto dto)
+        public async Task<IActionResult> EditOrderStatus([FromRoute] int id, [FromBody] OrderStatusDto dto, [FromQuery] bool cancelEmail)
         {
             var order = await _context.Orders.FirstOrDefaultAsync(o => o.Id == id);
 
@@ -135,7 +136,47 @@ namespace ManagementSystem.Controllers
 
             await _context.SaveChangesAsync();
 
+            if (cancelEmail)
+            {
+                var orderDetails = await LoadOrderDetails(id);
+                SendCancellationEmail(orderDetails);
+            }
+
             return Ok("Order Status Updated Successfully");
+        }
+
+        // GET: api/Orders/id/sendEmail
+        [HttpGet("{id}/sendEmail")]
+        public async Task<IActionResult> SendOrderDetailsEmail([FromRoute] int id)
+        {
+            var order = await LoadOrderDetails(id);
+            if (order != null)
+            {
+                var html = await _viewRenderService.RenderToStringAsync("../Views/OrderDetailsEmail", order);
+                var message = new Message(new string[] { order.Customer.Email }, "Order Details", html);
+                _emailService.SendHtmlEmail(message);
+            }
+
+            return NoContent();
+        }
+
+        private async void SendCancellationEmail(Order order)
+        {
+            var html = await _viewRenderService.RenderToStringAsync("../Views/CancellationEmail", order);
+            var message = new Message(new string[] { order.Customer.Email }, "Cancellation Email", html);
+            _emailService.SendHtmlEmail(message);
+        }
+
+        private async Task<Order> LoadOrderDetails(int id)
+        {
+            var order = await _context.Orders
+                .Include(o => o.Customer)
+                .Include(o => o.ApplicationUser)
+                .Include(o => o.OrderItems)
+                .ThenInclude(o => o.Item)
+                .AsNoTracking()
+                .FirstOrDefaultAsync(o => o.Id == id);
+            return order;
         }
     }
 }
